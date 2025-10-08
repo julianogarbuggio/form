@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Cadastro — Juliano Garbuggio – Advocacia & Consultoria</title>
+  <style>
+    :root{--bg:#0f172a;--card:#111827;--ink:#e5e7eb;--muted:#9ca3af;--accent:#22c55e;--danger:#ef4444;--line:#1f2937}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#0b1220,#0f172a);
+         font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,Noto Sans,"Helvetica Neue",Ubuntu,Cantarell;
+         color:var(--ink);-webkit-text-size-adjust:100%;overflow-x:hidden}
+    .wrap{max-width:880px;width:100%;margin:0 auto;padding:clamp(12px,3vw,24px)}
+    .card{width:100%;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    header{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media(max-width:640px){header{flex-direction:column;align-items:flex-start;gap:6px}}
+    header h1{font-size:18px;margin:0;line-height:1.2}
+    header small{color:var(--muted)}
+    form{padding:20px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:760px){.grid.cols-2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input,button{font-size:16px}
+    input{width:100%;min-width:0;padding:14px 12px;border:1px solid var(--line);border-radius:12px;background:#0b1020;color:var(--ink);max-width:100%}
+    input::placeholder{color:#6b7280}
+    .row{display:grid;gap:14px;grid-template-columns:minmax(0,1.2fr) minmax(0,.6fr)}
+    .row-3{display:grid;gap:14px;grid-template-columns:minmax(0,1.2fr) minmax(0,.5fr) minmax(0,.8fr)}
+    @media(max-width:759px){.row,.row-3{grid-template-columns:1fr}}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    button{cursor:pointer;border:none;border-radius:12px;padding:12px 14px}
+    .primary{background:var(--accent);color:#00210f;font-weight:700}
+    .ghost{background:#0b1020;border:1px solid var(--line);color:var(--ink)}
+    .danger{background:var(--danger);color:#fff}
+    .output{white-space:pre-wrap;background:#0b1020;border:1px dashed var(--line);border-radius:12px;padding:12px;margin-top:12px;color:#e5e7eb;min-height:120px;overflow-wrap:break-word}
+    .hr{height:1px;background:var(--line);margin:6px 0 14px}
+    .destino-box{background:#0b1020;border:1px solid var(--line);border-radius:12px;padding:12px}
+    .destino-num{font-size:18px;letter-spacing:.5px}
+    .footer{padding:14px 20px;border-top:1px solid var(--line)}
+    .copyright{color:var(--muted);font-size:13px}
+    .copyright a{color:var(--ink);text-decoration:underline}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <h1>Juliano Garbuggio – Advocacia & Consultoria</h1>
+        <small>Preencha seus dados para procuração e demais docs</small>
+      </header>
+
+      <form id="cadastroForm" onsubmit="event.preventDefault()">
+        <p class="title">Dados pessoais</p>
+        <div class="grid">
+          <div>
+            <label>Nome completo</label>
+            <input id="nome" placeholder="Ex: Maria da Silva" />
+          </div>
+          <div class="grid cols-2">
+            <div>
+              <label>Nacionalidade</label>
+              <input id="nacionalidade" placeholder="Ex: brasileira" />
+            </div>
+            <div>
+              <label>Estado civil</label>
+              <input id="estado_civil" placeholder="Ex: casada" />
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div>
+              <label>Profissão</label>
+              <input id="profissao" placeholder="Ex: professora" />
+            </div>
+            <div class="row">
+              <div>
+                <label>RG</label>
+                <input id="rg" placeholder="Ex: 12.345.678-9" />
+              </div>
+              <div>
+                <label>UF do RG</label>
+                <input id="rg_uf" maxlength="2" placeholder="Ex: SP" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>CPF</label>
+            <input id="cpf" placeholder="000.000.000-00" />
+          </div>
+        </div>
+
+        <div class="hr"></div>
+        <p class="title">Endereço</p>
+        <div class="grid">
+          <div>
+            <label>CEP (principal)</label>
+            <input id="cep1" placeholder="00000-000" inputmode="numeric" />
+          </div>
+
+          <div class="row-3">
+            <div>
+              <label>Rua / Avenida</label>
+              <input id="logradouro" placeholder="Ex: Avenida Brasil" />
+            </div>
+            <div>
+              <label>Número</label>
+              <input id="numero" inputmode="numeric" placeholder="Ex: 7" />
+            </div>
+            <div>
+              <label>Complemento</label>
+              <input id="complemento" placeholder="Ex: apto 27" />
+            </div>
+          </div>
+
+          <div class="grid cols-2">
+            <div>
+              <label>Bairro</label>
+              <input id="bairro" placeholder="Ex: Jardim Paulista" />
+            </div>
+            <div class="row">
+              <div>
+                <label>UF</label>
+                <input id="estado" maxlength="2" placeholder="Ex: SP" />
+              </div>
+              <div>
+                <label>Cidade</label>
+                <input id="cidade" placeholder="Ex: São Paulo" />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label>CEP (confirmação)</label>
+            <input id="cep2" placeholder="00000-000" inputmode="numeric" />
+          </div>
+        </div>
+
+        <div class="hr"></div>
+        <p class="title">Contato</p>
+        <div class="grid cols-2">
+          <div class="row">
+            <div>
+              <label>WhatsApp — DDD</label>
+              <input id="ddd" maxlength="2" placeholder="Ex: 11" />
+            </div>
+            <div>
+              <label>Número</label>
+              <input id="whats" placeholder="Ex: 95675-9223" />
+            </div>
+          </div>
+          <div>
+            <label>E-mail</label>
+            <input id="email" type="email" placeholder="Ex: nome@email.com" />
+          </div>
+        </div>
+
+        <div class="hr"></div>
+        <p class="title">Envio por WhatsApp</p>
+        <div class="grid cols-2">
+          <div>
+            <label>Número destino (Juliano Garbuggio – Advocacia & Consultoria)</label>
+            <div class="destino-box">
+              <div class="destino-num">55 11 95675-9223</div>
+              <div class="hint" style="color:var(--muted);margin-top:6px">
+                Será usado para abrir a conversa com os dados formatados
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="ddi" value="55" />
+        <input type="hidden" id="destino" value="11 95675-9223" />
+
+        <div class="actions">
+          <button class="primary" type="button" onclick="onSalvarEnviar()">Salvar na planilha + Enviar WhatsApp</button>
+          <button class="ghost" type="button" onclick="onGerar()">Gerar texto</button>
+          <button class="ghost" type="button" onclick="onCopiar()">Copiar texto</button>
+          <button class="danger" type="reset" onclick="onLimpar()">Limpar</button>
+        </div>
+        <div id="saida" class="output" aria-live="polite"></div>
+      </form>
+
+      <div class="footer">
+        <span class="copyright">© 2025 Juliano Garbuggio – Advocacia & Consultoria —
+          <a href="https://www.julianogarbuggio.adv.br" target="_blank" rel="noopener">www.julianogarbuggio.adv.br</a></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ======= CONFIG =======
+    const CONFIG = {
+      SHEETS_WEBAPP_URL: "",  // Google Apps Script (Web App) — opcional
+      JULIA_API_URL: "http://127.0.0.1:8011/api/cadastros" // seu webhook — opcional
+    };
+
+    // ====== Utils ======
+    const $ = (id)=>document.getElementById(id);
+    const onlyDigits = (s)=>(s||"").replace(/\D+/g,"");
+    const toTitle = (s)=>(s||"").trim();
+
+    function maskCPF(v){ v=onlyDigits(v).slice(0,11); return v.replace(/(\d{3})(\d)/,"$1.$2").replace(/(\d{3})(\d)/,"$1.$2").replace(/(\d{3})(\d{1,2})$/,"$1-$2"); }
+    function maskCEP(v){ v=onlyDigits(v).slice(0,8); return v.replace(/(\d{5})(\d{1,3})$/,"$1-$2"); }
+    function maskWhats(v){ v=onlyDigits(v).slice(0,9); return v.length>=5 ? v.replace(/(\d{5})(\d{0,4})/,"$1-$2") : v; }
+
+    // Máscaras
+    (function(){
+      const map = { cpf:maskCPF, cep1:maskCEP, cep2:maskCEP, whats:maskWhats };
+      Object.keys(map).forEach(id=>{
+        const el=$(id); if(!el) return;
+        el.addEventListener('input', e=>{ e.target.value = map[id](e.target.value); });
+      });
+    })();
+
+    // ViaCEP + sincronização de CEP
+    async function viaCEP(cep){
+      const clean=onlyDigits(cep);
+      if(clean.length!==8) return null;
+      const r=await fetch(`https://viacep.com.br/ws/${clean}/json/`);
+      if(!r.ok) return null;
+      const j=await r.json();
+      if(j.erro) return null;
+      return j;
+    }
+    $("cep1").addEventListener('blur', async ()=>{
+      const v = $("cep1").value;
+      $("cep2").value = v; // replica
+      const j=await viaCEP(v);
+      if(!j) return;
+      if(j.logradouro && !$("logradouro").value) $("logradouro").value=j.logradouro;
+      if(j.bairro     && !$("bairro").value)     $("bairro").value=j.bairro;
+      if(j.localidade && !$("cidade").value)     $("cidade").value=j.localidade;
+      if(j.uf         && !$("estado").value)     $("estado").value=j.uf;
+    });
+
+    // Coleta/validação
+    function coleta(){
+      return {
+        nome: toTitle($("nome").value),
+        nacionalidade: toTitle($("nacionalidade").value),
+        estado_civil: toTitle($("estado_civil").value),
+        profissao: toTitle($("profissao").value),
+        rg: toTitle($("rg").value),
+        rg_uf: toTitle($("rg_uf").value).toUpperCase(),
+        cpf: toTitle($("cpf").value),
+        logradouro: toTitle($("logradouro").value),
+        numero: toTitle($("numero").value),
+        complemento: toTitle($("complemento").value),
+        bairro: toTitle($("bairro").value),
+        cep: toTitle($("cep2").value || $("cep1").value),
+        cidade: toTitle($("cidade").value),
+        estado: toTitle($("estado").value).toUpperCase(),
+        ddd: toTitle($("ddd").value),
+        whatsapp: toTitle($("whats").value),
+        email: toTitle($("email").value)
+      };
+    }
+
+    function textoWhats(d){
+      return (
+        `Nome completo: ${d.nome}\n`+
+        `Nacionalidade: ${d.nacionalidade}\n`+
+        `Estado civil: ${d.estado_civil}\n`+
+        `Profissão: ${d.profissao}\n`+
+        `RG: ${d.rg} - ESTADO: ${d.rg_uf}\n`+
+        `CPF: ${d.cpf}\n`+
+        `ENDEREÇO COMPLETO: ${d.logradouro}, nº: ${d.numero}, complemento: ${d.complemento}\n`+
+        (d.bairro ? `Bairro: ${d.bairro}\n` : "")+
+        `CEP: ${d.cep}\n`+
+        `CIDADE: ${d.cidade}, ESTADO: ${d.estado}\n`+
+        `WhatsApp COM DDD: ${d.ddd} ${d.whatsapp}\n`+
+        `E-mail: ${d.email}`
+      ).trim();
+    }
+
+    function validaEnvio(d){
+      const e=[];
+      if(!d.nome) e.push('Nome completo é obrigatório');
+      if(d.cpf && !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(d.cpf)) e.push('CPF no formato 000.000.000-00');
+      if(d.email && !/^\S+@\S+\.\S+$/.test(d.email)) e.push('E-mail inválido');
+      if(d.ddd && !/^\d{2}$/.test(d.ddd)) e.push('DDD com 2 dígitos');
+      if(d.whatsapp && !/^\d{5}-?\d{4}$/.test(d.whatsapp)) e.push('WhatsApp no formato 9XXXX-XXXX');
+      const cep = d.cep;
+      if(cep && !/^\d{5}-?\d{3}$/.test(cep)) e.push('CEP no formato 00000-000');
+      return e;
+    }
+
+    function setSaida(txt){ $("saida").textContent = txt; }
+    function onGerar(){ const d=coleta(); setSaida(textoWhats(d)); }
+
+    // Copiar: usa método antigo primeiro (funciona sem HTTPS), depois o moderno
+    function fallbackCopy(txt){
+      const ta=document.createElement('textarea'); ta.value=txt;
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); setSaida(txt+'\n\n✅ Texto copiado.'); }
+      catch{ setSaida(txt+'\n\nℹ️ Selecione e copie manualmente.'); }
+      finally{ document.body.removeChild(ta); }
+    }
+    function onCopiar(){
+      const d=coleta(); const errs=validaEnvio(d);
+      if(errs.length){ setSaida('⚠️ Corrija antes de copiar:\n- '+errs.join('\n- ')); return }
+      const txt=textoWhats(d);
+      try{ fallbackCopy(txt); }
+      catch{
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(txt).then(()=>setSaida(txt+'\n\n✅ Texto copiado.'))
+            .catch(()=>setSaida(txt+'\n\nℹ️ Copie manualmente.'));
+        } else setSaida(txt+'\n\nℹ️ Copie manualmente.');
+      }
+    }
+
+    async function postJSON(url,payload){
+      const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      return r.json().catch(()=>({ok:true}));
+    }
+
+    // >>> iOS/Android: abre aba primeiro, depois salva, depois navega
+    async function onSalvarEnviar(){
+      const d=coleta();
+      const errs=validaEnvio(d);
+      if(errs.length){ setSaida('⚠️ Corrija antes de enviar:\n- '+errs.join('\n- ')); return }
+
+      const destino=onlyDigits($("ddi").value+onlyDigits($("destino").value));
+      const url=`https://wa.me/${destino}?text=${encodeURIComponent(textoWhats(d))}`;
+
+      // 1) abre janela sincrona (gesto do usuário)
+      const win = window.open('about:blank'); // pode abrir na mesma aba em alguns navegadores
+      if(!win){ setSaida('ℹ️ Permita pop-ups ou abra no navegador padrão.'); return; }
+
+      setSaida('⏳ Salvando e preparando WhatsApp...');
+
+      // 2) tarefas assíncronas em paralelo (sem bloquear)
+      const payload={origem:'form_julia',criado_em:new Date().toISOString(),dados:d};
+      const jobs=[];
+      if(CONFIG.SHEETS_WEBAPP_URL) jobs.push(postJSON(CONFIG.SHEETS_WEBAPP_URL,payload));
+      if(CONFIG.JULIA_API_URL)     jobs.push(postJSON(CONFIG.JULIA_API_URL,payload));
+      try{ if(jobs.length) await Promise.allSettled(jobs); }catch(_){}
+
+      // 3) navega a janela já aberta
+      try{ win.location.href = url; } catch(_){ window.location.href = url; }
+      setSaida('✅ Abrindo WhatsApp…');
+    }
+
+    function onLimpar(){ setTimeout(()=>setSaida(''),0); }
+  </script>
+</body>
+</html>
