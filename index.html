@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+r"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
@@ -436,7 +436,7 @@
       }; 
     }
 
-    function showErrors(list){ alert('Ajuste:\n• '+list.join('\n• ')); (document.activeElement||document.body).blur(); }
+    function showErrors(list){ alert('Ajuste:\\n• '+list.join('\\n• ')); (document.activeElement||document.body).blur(); }
     function validaSimples(d){ 
       const falt=[]; 
       if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } 
@@ -444,8 +444,8 @@
       if(!d.cpf) falt.push('CPF'); 
       if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); 
       if(!d.cel) falt.push('CELULAR'); 
-      if(!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(d.cel) && d.cel.replace(/\D/g,'').length!==11 && d.cel.replace(/\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
-      if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
+      if(!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(d.cel) && d.cel.replace(/\\D/g,'').length!==11 && d.cel.replace(/\\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
+      if(!/^\\d{5}-?\\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
       if(!d.cidadeuf) falt.push('CIDADE/UF'); 
       if(falt.length){ showErrors(falt); return false; } 
       return true; 
@@ -455,15 +455,15 @@
       if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } 
       ['nome','nasc','ec','prof','rg','rguf','cpf','cep','rua','num','bairro','uf','cidade','ddd','cel','email'].forEach(k=>{ if(!d[k]) falt.push(k.toUpperCase()); }); 
       if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); 
-      if(!/^\d{2}$/.test(d.ddd)) falt.push('DDD inválido'); 
-      if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
-      if(d.cel.replace(/\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
+      if(!/^\\d{2}$/.test(d.ddd)) falt.push('DDD inválido'); 
+      if(!/^\\d{5}-?\\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
+      if(d.cel.replace(/\\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
       if(falt.length){ showErrors(falt); return false; } 
       return true; 
     }
 
     /* ------- modo simples x completo ------- */
-    function normalize(s){ return (s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,''); }
+    function normalize(s){ return (s||'').toLowerCase().normalize('NFD').replace(/\\p{Diacritic}/gu,''); }
     function toggleModo(){ 
       const m=normalize($('#motivo').value); 
       const full = (m==='procuracao' || m==='atualizacao'); 
@@ -488,7 +488,7 @@
     function bind(){
       // máscaras (simples)
       $('#cpf_s').addEventListener('input',e=>maskCPF(e.target));
-      $('#cel_s').addEventListener('input',e=>{ e.target.value=e.target.value.replace(/[^\d()\-\s+]/g,''); });
+      $('#cel_s').addEventListener('input',e=>{ e.target.value=e.target.value.replace(/[^\\d()\\-\\s+]/g,''); });
       const cepS=$('#cep_s'); ['input','blur','change','keyup','touchend'].forEach(ev=>cepS.addEventListener(ev,()=>{ maskCEP(cepS); autoCEP(cepS,null,null,null,null,$('#cidadeuf_s')); }));
 
       // máscaras (completo)
@@ -538,3 +538,27 @@
   </script>
 </body>
 </html>
+"""
+
+# Embed the logo as base64 PNG
+logo_path = root / "logobranca_juliano_garguggio.webp"
+if logo_path.exists():
+    im = Image.open(logo_path).convert("RGBA")
+    # resize conservative
+    max_w = 600
+    if im.width > max_w:
+        ratio = max_w / im.width
+        im = im.resize((int(im.width*ratio), int(im.height*ratio)))
+    tmp_png = root / "tmp_logo.png"
+    im.save(tmp_png, format="PNG")
+    b64 = base64.b64encode(tmp_png.read_bytes()).decode("ascii")
+    data_uri = f"data:image/png;base64,{b64}"
+else:
+    # tiny transparent pixel
+    data_uri = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
+
+html_final = user_html.replace('src="logo-juliano-garbuggio.png"', f'src="{data_uri}"')
+
+out_path = root / "index_final_logo_embed.html"
+out_path.write_text(html_final, encoding="utf-8")
+out_path
