@@ -16,9 +16,12 @@
     .wrap{max-width:980px;margin:24px auto;padding:0 16px}
     /* HEADER */
     .hero{background:linear-gradient(180deg,#1c203d,#12152a);border:1px solid var(--border);border-radius:16px;padding:18px 18px 22px;margin-bottom:18px}
+    .brand{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .brand img{max-width:260px;width:100%;height:auto;display:inline-block;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
     .brand h1{margin:0 0 6px;font-weight:800;letter-spacing:.8px;text-align:center}
     .oabs{font-size:.82rem;color:var(--muted);margin-top:8px;text-align:right}
     .subtitle{margin:.35rem 0 0;color:#fff;font-weight:700;text-align:center;font-size:1.08rem}
+
     /* CARDS */
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin:14px 0}
     .grid{display:grid;gap:12px}
@@ -40,13 +43,17 @@
     .inline{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
     .chips{display:flex;gap:10px;flex-wrap:wrap}
     .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:8px 10px;border-radius:10px}
+    hr.sep{border:0;border-top:1px dashed var(--border);margin:14px 0}
   </style>
 </head>
 <body>
   <div class="wrap">
     <!-- HEADER -->
     <section class="hero" aria-label="Identidade">
-      <h1>JULIANO GARBUGGIO | ADVOCACIA &amp; CONSULTORIA</h1>
+      <div class="brand">
+        <img src="logo-juliano-garbuggio.png" alt="Logo Juliano Garbuggio">
+        <h1>JULIANO GARBUGGIO | ADVOCACIA &amp; CONSULTORIA</h1>
+      </div>
       <div class="oabs">OAB/SP 505.598 &nbsp;|&nbsp; OAB/PR 47.565 &nbsp;|&nbsp; OAB/MG 234.362</div>
       <p class="subtitle">Preencha seus dados para atendimento especializado.</p>
     </section>
@@ -82,12 +89,50 @@
         </div>
       </section>
 
-      <!-- DADOS SIMPLES -->
+      <!-- DADOS SIMPLES (TODOS os demais casos) -->
       <section class="card" id="sec-simples">
         <h2 class="section-title">2) Dados para contato</h2>
         <div class="grid cols-2">
           <div><label class="req" for="nome_s">Nome completo</label><input id="nome_s" required></div>
           <div><label class="req" for="cpf_s">CPF</label><input id="cpf_s" placeholder="000.000.000-00" required></div>
+
+          <!-- Identificação complementar (opcional) – SIMPLES -->
+          <div style="grid-column:1/-1">
+            <label>Identificação complementar (opcional)</label>
+            <div class="inline">
+              <label class="pill"><input type="radio" name="ident_comp_s" value="sim"> Sim</label>
+              <label class="pill"><input type="radio" name="ident_comp_s" value="nao" checked> Não</label>
+            </div>
+          </div>
+          <div id="ident-comp-bloco-s" class="hide" style="grid-column:1/-1">
+            <div class="grid cols-2">
+              <div><label for="nome_social_s">Nome social</label><input id="nome_social_s" placeholder="Opcional"></div>
+              <div><label for="pronomes_s">Pronomes (ex.: ela/dela, ele/dele, elu/delu)</label><input id="pronomes_s" placeholder="Opcional"></div>
+            </div>
+            <hr class="sep">
+          </div>
+
+          <!-- Identidade de gênero (opcional) – SIMPLES -->
+          <div style="grid-column:1/-1">
+            <label>Auto Declaração – Identidade de Gênero (opcional)</label>
+            <div class="inline">
+              <label class="pill"><input type="radio" name="ident_genero_toggle_s" value="sim"> Sim</label>
+              <label class="pill"><input type="radio" name="ident_genero_toggle_s" value="nao" checked> Não</label>
+            </div>
+            <div id="genero-opcoes-s" class="hide" style="margin-top:10px">
+              <div class="chips">
+                <label class="chip"><input type="checkbox" value="Mulher cisgênera"> Mulher cisgênera</label>
+                <label class="chip"><input type="checkbox" value="Homem cisgênero"> Homem cisgênero</label>
+                <label class="chip"><input type="checkbox" value="Mulher transgênera"> Mulher transgênera</label>
+                <label class="chip"><input type="checkbox" value="Homem transgênero"> Homem transgênero</label>
+                <label class="chip"><input type="checkbox" value="Travesti"> Travesti</label>
+                <label class="chip"><input type="checkbox" value="Não-binárie"> Não-binárie</label>
+                <label class="chip"><input type="checkbox" value="Prefiro não dizer"> Prefiro não dizer</label>
+                <label class="chip">Outro: <input id="genero_outro_s" placeholder="especifique" style="width:220px"></label>
+              </div>
+            </div>
+          </div>
+
           <div><label class="req" for="cel_s">Celular (WhatsApp)</label><input id="cel_s" placeholder="(11) 9xxxx-xxxx" required></div>
           <div><label for="email_s">E-mail</label><input id="email_s" type="email" placeholder="voce@email.com"></div>
           <div><label class="req" for="cep_s">CEP</label><input id="cep_s" placeholder="00000-000" required></div>
@@ -104,8 +149,8 @@
         <h2 class="section-title">2) Dados pessoais</h2>
         <div class="grid cols-2">
           <div><label class="req" for="nome">Nome completo</label><input id="nome"></div>
-          
-          <!-- Identificação complementar (opcional) -->
+
+          <!-- Identificação complementar (opcional) – COMPLETO -->
           <div style="grid-column:1/-1">
             <label>Identificação complementar (opcional)</label>
             <div class="inline">
@@ -118,7 +163,7 @@
               <div><label for="nome_social">Nome social</label><input id="nome_social" placeholder="Opcional"></div>
               <div><label for="pronomes">Pronomes (ex.: ela/dela, ele/dele, elu/delu)</label><input id="pronomes" placeholder="Opcional"></div>
             </div>
-            <hr style="border:0;border-top:1px dashed var(--border);margin:14px 0">
+            <hr class="sep">
           </div>
 
           <div>
@@ -202,7 +247,7 @@
           <div><label class="req" for="cpf">CPF</label><input id="cpf" placeholder="000.000.000-00"></div>
         </div>
 
-        <!-- Auto declaração – Identidade de gênero (opcional) -->
+        <!-- Auto declaração – Identidade de gênero (opcional) – COMPLETO -->
         <div style="margin-top:8px">
           <label>Auto Declaração – Identidade de Gênero (opcional)</label>
           <div class="inline">
@@ -265,7 +310,7 @@
 
   <script>
     const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
-    const PLANILHA_URL = ""; // WebApp (opcional)
+    const PLANILHA_URL = ""; // (opcional) WebApp para "blindado"
 
     const isMobile = () => /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
     const isiOS    = () => /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -281,28 +326,163 @@
     function isValidCPF(str){ const cpf=(str||'').replace(/\D/g,''); if(!cpf||cpf.length!==11||/^([0-9])\1{10}$/.test(cpf)) return false; let s=0; for(let i=0;i<9;i++) s+=parseInt(cpf[i])*(10-i); let r=11-(s%11); const d1=(r>=10)?0:r; if(d1!==parseInt(cpf[9])) return false; s=0; for(let i=0;i<10;i++) s+=parseInt(cpf[i])*(11-i); r=11-(s%11); const d2=(r>=10)?0:r; return d2===parseInt(cpf[10]); }
 
     async function viaCEP(raw){ try{ const r=await fetch(`https://viacep.com.br/ws/${raw}/json/`); const j=await r.json(); return j && !j.erro ? j : null; }catch(e){ return null; } }
-    async function autoCEP(cepEl, cidadeEl, ufEl, ruaEl, bairroEl, cidadeCompactEl){ const raw=(cepEl.value||'').replace(/\D/g,''); if(raw.length!==8) return; const j=await viaCEP(raw); if(cidadeEl) cidadeEl.value=''; if(ufEl) ufEl.value=''; if(ruaEl) ruaEl.value=''; if(bairroEl) bairroEl.value=''; if(cidadeCompactEl) cidadeCompactEl.value=''; if(!j) return; if(cidadeEl) cidadeEl.value=j.localidade||''; if(ufEl) ufEl.value=j.uf||''; if(ruaEl && j.logradouro) ruaEl.value=j.logradouro; if(bairroEl && j.bairro) bairroEl.value=j.bairro; if(cidadeCompactEl) cidadeCompactEl.value = `${j.localidade||''}/${j.uf||''}`.trim(); }
+    async function autoCEP(cepEl, cidadeEl, ufEl, ruaEl, bairroEl, cidadeCompactEl){ 
+      const raw=(cepEl.value||'').replace(/\D/g,''); 
+      if(raw.length!==8) return; 
+      const j=await viaCEP(raw); 
+      if(cidadeEl) cidadeEl.value=''; if(ufEl) ufEl.value=''; if(ruaEl) ruaEl.value=''; if(bairroEl) bairroEl.value=''; if(cidadeCompactEl) cidadeCompactEl.value='';
+      if(!j) return; 
+      if(cidadeEl) cidadeEl.value=j.localidade||''; 
+      if(ufEl) ufEl.value=j.uf||''; 
+      if(ruaEl && j.logradouro) ruaEl.value=j.logradouro; 
+      if(bairroEl && j.bairro) bairroEl.value=j.bairro; 
+      if(cidadeCompactEl) cidadeCompactEl.value = `${j.localidade||''}/${j.uf||''}`.trim(); 
+    }
 
     /* ------- mensagens ------- */
-    function montarMsgSimples(d, protocolo){ return [ `📝 Novo cadastro – *${d.nome}*`, '', `Nome: ${d.nome}`, `CPF: ${d.cpf} | Celular: ${d.cel}`, d.email?`E-mail: ${d.email}`:'', `Cidade: ${d.cidadeuf} | CEP: ${d.cep}`, d.breve?`Motivo: ${d.breve}`:'', protocolo?`Protocolo: ${protocolo}`:'', '', 'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'].filter(Boolean).join('\n'); }
+    function montarMsgSimples(d, protocolo){
+      const identGeneros = (d.ident_genero_list||[]).join(', ');
+      return [
+        `📝 Novo cadastro – *${d.nome}*`,
+        '',
+        `Nome: ${d.nome}`,
+        d.nome_social?`Nome social: ${d.nome_social}`:'',
+        d.pronomes?`Pronomes: ${d.pronomes}`:'',
+        identGeneros?`Identidade(s) de gênero: ${identGeneros}${d.genero_outro? ' — '+d.genero_outro:''}`:'',
+        `CPF: ${d.cpf} | Celular: ${d.cel}`,
+        d.email?`E-mail: ${d.email}`:'',
+        `Cidade: ${d.cidadeuf} | CEP: ${d.cep}`,
+        d.breve?`Motivo: ${d.breve}`:'',
+        protocolo?`Protocolo: ${protocolo}`:'',
+        '',
+        'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'
+      ].filter(Boolean).join('\n');
+    }
 
-    function montarMsgCompleta(d, protocolo){ const identGeneros = (d.ident_genero_list||[]).join(', '); return [ `📝 Novo cadastro – *${d.nome}*`, '', `Nome completo: ${d.nome}`, d.nome_social?`Nome social: ${d.nome_social}`:'', d.pronomes?`Pronomes: ${d.pronomes}`:'', identGeneros?`Identidade(s) de gênero: ${identGeneros}${d.genero_outro? ' — '+d.genero_outro:''}`:'', `Nacionalidade: ${d.nacionalidade}${d.nacionalidade==='Outros'&&d.nac_outros?` (${d.nac_outros})`:''}`, `Data de nascimento: ${d.nasc}`, `Estado civil: ${d.ec}`, `Profissão: ${d.prof}` , `RG: ${d.rg} - ESTADO: ${d.rguf}`, `CPF: ${d.cpf}`, `ENDEREÇO COMPLETO: ${d.rua}, nº: ${d.num}, complemento: ${d.compl||''}`, `Bairro: ${d.bairro}`, `CEP: ${d.cep}`, `CIDADE: ${d.cidade}, ESTADO: ${d.uf}`, `WhatsApp COM DDD: ${d.ddd} ${d.cel}`, `E-mail: ${d.email}`, protocolo?`Protocolo: ${protocolo}`:'', '', 'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'].filter(Boolean).join('\n'); }
+    function montarMsgCompleta(d, protocolo){ 
+      const identGeneros = (d.ident_genero_list||[]).join(', ');
+      return [
+        `📝 Novo cadastro – *${d.nome}*`,
+        '',
+        `Nome completo: ${d.nome}`,
+        d.nome_social?`Nome social: ${d.nome_social}`:'',
+        d.pronomes?`Pronomes: ${d.pronomes}`:'',
+        identGeneros?`Identidade(s) de gênero: ${identGeneros}${d.genero_outro? ' — '+d.genero_outro:''}`:'',
+        `Nacionalidade: ${d.nacionalidade}${d.nacionalidade==='Outros'&&d.nac_outros?` (${d.nac_outros})`:''}`,
+        `Data de nascimento: ${d.nasc}`,
+        `Estado civil: ${d.ec}`,
+        `Profissão: ${d.prof}`,
+        `RG: ${d.rg} - ESTADO: ${d.rguf}`,
+        `CPF: ${d.cpf}`,
+        `ENDEREÇO COMPLETO: ${d.rua}, nº: ${d.num}, complemento: ${d.compl||''}`,
+        `Bairro: ${d.bairro}`,
+        `CEP: ${d.cep}`,
+        `CIDADE: ${d.cidade}, ESTADO: ${d.uf}`,
+        `WhatsApp COM DDD: ${d.ddd} ${d.cel}`,
+        `E-mail: ${d.email}`,
+        protocolo?`Protocolo: ${protocolo}`:'',
+        '',
+        'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'
+      ].filter(Boolean).join('\n');
+    }
 
     /* ------- coleta/valida ------- */
-    function coletaSimples(){ return { motivo: $('#motivo').value, tipo: ($$('input[name="tipo"]').find(r=>r.checked)||{}).value||'—', nome: $('#nome_s').value.trim(), cpf: $('#cpf_s').value.trim(), cel: $('#cel_s').value.trim(), email: $('#email_s').value.trim(), cep: $('#cep_s').value.trim(), cidadeuf: $('#cidadeuf_s').value.trim(), breve: $('#breve').value.trim() }; }
-    function coletaCompleta(){ const generoChecks = Array.from($('#genero-opcoes').querySelectorAll('input[type="checkbox"]:checked')).map(c=>c.value); return { motivo: $('#motivo').value, nome: $('#nome').value.trim(), nome_social: $('#nome_social')?.value.trim()||'', pronomes: $('#pronomes')?.value.trim()||'', ident_genero_list: generoChecks, genero_outro: $('#genero_outro')?.value.trim()||'', nacionalidade: $('#nacionalidade').value, nac_outros: ($('#nac_outros')?.value||'').trim(), nasc: $('#nasc').value.trim(), ec: $('#ec').value, prof: $('#prof').value==='OUTROS'?($('#prof_outros').value.trim()||'OUTROS'):$('#prof').value, rg: $('#rg').value.trim(), rguf: $('#rguf').value, cpf: $('#cpf').value.trim(), cep: $('#cep').value.trim(), rua: $('#rua').value.trim(), num: $('#num').value.trim(), compl: $('#compl').value.trim(), bairro: $('#bairro').value.trim(), uf: $('#uf').value, cidade: $('#cidade').value.trim(), ddd: $('#ddd').value.trim(), cel: $('#cel').value.trim(), email: $('#email').value.trim() }; }
+    function coletaSimples(){ 
+      const generoChecks = Array.from($('#genero-opcoes-s').querySelectorAll('input[type="checkbox"]:checked')).map(c=>c.value);
+      return { 
+        motivo: $('#motivo').value, 
+        tipo: ($$('input[name="tipo"]').find(r=>r.checked)||{}).value||'—', 
+        nome: $('#nome_s').value.trim(), 
+        nome_social: $('#nome_social_s')?.value.trim()||'',
+        pronomes: $('#pronomes_s')?.value.trim()||'',
+        ident_genero_list: generoChecks,
+        genero_outro: $('#genero_outro_s')?.value.trim()||'',
+        cpf: $('#cpf_s').value.trim(), 
+        cel: $('#cel_s').value.trim(), 
+        email: $('#email_s').value.trim(), 
+        cep: $('#cep_s').value.trim(), 
+        cidadeuf: $('#cidadeuf_s').value.trim(), 
+        breve: $('#breve').value.trim() 
+      }; 
+    }
+
+    function coletaCompleta(){ 
+      const generoChecks = Array.from($('#genero-opcoes').querySelectorAll('input[type="checkbox"]:checked')).map(c=>c.value);
+      return { 
+        motivo: $('#motivo').value, 
+        nome: $('#nome').value.trim(), 
+        nome_social: $('#nome_social')?.value.trim()||'', 
+        pronomes: $('#pronomes')?.value.trim()||'', 
+        ident_genero_list: generoChecks, 
+        genero_outro: $('#genero_outro')?.value.trim()||'', 
+        nacionalidade: $('#nacionalidade').value, 
+        nac_outros: ($('#nac_outros')?.value||'').trim(), 
+        nasc: $('#nasc').value.trim(), 
+        ec: $('#ec').value, 
+        prof: $('#prof').value==='OUTROS'?($('#prof_outros').value.trim()||'OUTROS'):$('#prof').value, 
+        rg: $('#rg').value.trim(), 
+        rguf: $('#rguf').value, 
+        cpf: $('#cpf').value.trim(), 
+        cep: $('#cep').value.trim(), 
+        rua: $('#rua').value.trim(), 
+        num: $('#num').value.trim(), 
+        compl: $('#compl').value.trim(), 
+        bairro: $('#bairro').value.trim(), 
+        uf: $('#uf').value, 
+        cidade: $('#cidade').value.trim(), 
+        ddd: $('#ddd').value.trim(), 
+        cel: $('#cel').value.trim(), 
+        email: $('#email').value.trim() 
+      }; 
+    }
 
     function showErrors(list){ alert('Ajuste:\n• '+list.join('\n• ')); (document.activeElement||document.body).blur(); }
-    function validaSimples(d){ const falt=[]; if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } if(!d.nome) falt.push('NOME'); if(!d.cpf) falt.push('CPF'); if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); if(!d.cel) falt.push('CELULAR'); if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido'); if(!d.cidadeuf) falt.push('CIDADE/UF'); if(falt.length){ showErrors(falt); return false; } return true; }
-    function validaCompleta(d){ const falt=[]; if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } ['nome','nasc','ec','prof','rg','rguf','cpf','cep','rua','num','bairro','uf','cidade','ddd','cel','email'].forEach(k=>{ if(!d[k]) falt.push(k.toUpperCase()); }); if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); if(!/^\d{2}$/.test(d.ddd)) falt.push('DDD inválido'); if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido'); if(d.cel.replace(/\D/g,'').length!==9) falt.push('WhatsApp inválido'); if(falt.length){ showErrors(falt); return false; } return true; }
+    function validaSimples(d){ 
+      const falt=[]; 
+      if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } 
+      if(!d.nome) falt.push('NOME'); 
+      if(!d.cpf) falt.push('CPF'); 
+      if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); 
+      if(!d.cel) falt.push('CELULAR'); 
+      if(!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(d.cel) && d.cel.replace(/\D/g,'').length!==11 && d.cel.replace(/\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
+      if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
+      if(!d.cidadeuf) falt.push('CIDADE/UF'); 
+      if(falt.length){ showErrors(falt); return false; } 
+      return true; 
+    }
+    function validaCompleta(d){ 
+      const falt=[]; 
+      if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } 
+      ['nome','nasc','ec','prof','rg','rguf','cpf','cep','rua','num','bairro','uf','cidade','ddd','cel','email'].forEach(k=>{ if(!d[k]) falt.push(k.toUpperCase()); }); 
+      if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); 
+      if(!/^\d{2}$/.test(d.ddd)) falt.push('DDD inválido'); 
+      if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
+      if(d.cel.replace(/\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
+      if(falt.length){ showErrors(falt); return false; } 
+      return true; 
+    }
 
     /* ------- modo simples x completo ------- */
     function normalize(s){ return (s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,''); }
-    function toggleModo(){ const m=normalize($('#motivo').value); const full = (m==='procuracao' || m==='atualizacao'); $('#sec-completo').classList.toggle('hide',!full); $('#sec-simples').classList.toggle('hide',full); $('#tipo_wrap').classList.toggle('hide',full); }
+    function toggleModo(){ 
+      const m=normalize($('#motivo').value); 
+      const full = (m==='procuracao' || m==='atualizacao'); 
+      $('#sec-completo').classList.toggle('hide',!full); 
+      $('#sec-simples').classList.toggle('hide',full); 
+      $('#tipo_wrap').classList.toggle('hide',full); 
+    }
 
     /* ------- WA + planilha ------- */
-    function abrirWhatsApp(msg){ const fone='5511956759223'; const base = isiOS() ? 'https://api.whatsapp.com/send' : 'https://wa.me'; const url  = `${base}/${fone}?text=${encodeURIComponent(msg)}`; if (isMobile()) window.location.assign(url); else window.open(url,'_blank','noopener,noreferrer'); }
-    async function salvarNaPlanilha(payload){ if(!PLANILHA_URL) return {ok:false}; try{ const r=await fetch(PLANILHA_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); return {ok:r.ok}; } catch(e){ return {ok:false}; } }
+    function abrirWhatsApp(msg){ 
+      const fone='5511956759223'; // FORÇADO E ÚNICO
+      const base = isiOS() ? 'https://api.whatsapp.com/send' : 'https://wa.me';
+      const url  = `${base}/${fone}?text=${encodeURIComponent(msg)}`;
+      if (isMobile()) window.location.assign(url); else window.open(url,'_blank','noopener,noreferrer'); 
+    }
+    async function salvarNaPlanilha(payload){ 
+      if(!PLANILHA_URL) return {ok:false}; 
+      try{ const r=await fetch(PLANILHA_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); return {ok:r.ok}; } catch(e){ return {ok:false}; } 
+    }
 
     /* ------- binds ------- */
     function bind(){
@@ -324,17 +504,13 @@
       // profissão OUTROS
       $('#prof').addEventListener('change',()=>{ $('#prof_outros_wrap').classList.toggle('hide', $('#prof').value!=='OUTROS'); });
 
-      // Identificação complementar toggle
-      $$('input[name="ident_comp"]').forEach(r=>r.addEventListener('change',()=>{
-        const show = r.checked && r.value==='sim';
-        $('#ident-comp-bloco').classList.toggle('hide', !show);
-      }));
+      // Identificação complementar toggles
+      $$('input[name="ident_comp"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#ident-comp-bloco').classList.toggle('hide', !show); }));
+      $$('input[name="ident_comp_s"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#ident-comp-bloco-s').classList.toggle('hide', !show); }));
 
-      // Identidade de gênero toggle
-      $$('input[name="ident_genero_toggle"]').forEach(r=>r.addEventListener('change',()=>{
-        const show = r.checked && r.value==='sim';
-        $('#genero-opcoes').classList.toggle('hide', !show);
-      }));
+      // Identidade de gênero toggles
+      $$('input[name="ident_genero_toggle"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#genero-opcoes').classList.toggle('hide', !show); }));
+      $$('input[name="ident_genero_toggle_s"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#genero-opcoes-s').classList.toggle('hide', !show); }));
 
       // alternância robusta (desktop + mobile)
       ['change','input','touchend','click','keyup','blur'].forEach(ev=>{
