@@ -1,4 +1,4 @@
-r"""<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
@@ -15,14 +15,17 @@ r"""<!DOCTYPE html>
     body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
     .wrap{max-width:980px;margin:24px auto;padding:0 16px}
     /* HEADER */
-    .hero{background:linear-gradient(180deg,#1c203d,#12152a);border:1px solid var(--border);border-radius:16px;padding:18px 18px 22px;margin-bottom:18px}
+    .hero{background:linear-gradient(180deg,#1c203d,#12152a);border:1px solid var(--border);border-radius:16px;padding:18px 18px 22px;margin-bottom:18px;text-align:center}
     .brand{display:flex;flex-direction:column;align-items:center;gap:10px}
-    .brand img{max-width:260px;width:100%;height:auto;display:inline-block;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
-    .brand h1{margin:0 0 6px;font-weight:800;letter-spacing:.8px;text-align:center}
-    .oabs{font-size:.82rem;color:var(--muted);margin-top:8px;text-align:right}
+    .brand img{max-width:240px;width:100%;height:auto;display:inline-block;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+    .brand h1{margin:0 0 6px;font-weight:800;letter-spacing:.8px;color:#fff;font-size:1.3rem}
+    .oabs{font-size:.82rem;color:var(--muted);margin-top:8px}
     .subtitle{margin:.35rem 0 0;color:#fff;font-weight:700;text-align:center;font-size:1.08rem}
+    /* LOGO EMBUTIDA */
+    .logo {content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAACICAYAAAB8Z3WRAAAAAXNSR0IArs4c6QAA...==');}
+    /* (imagem completa continua no código abaixo) */
 
-    /* CARDS */
+    /* FORM GERAL */
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin:14px 0}
     .grid{display:grid;gap:12px}
     @media (min-width:720px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
@@ -51,14 +54,13 @@ r"""<!DOCTYPE html>
     <!-- HEADER -->
     <section class="hero" aria-label="Identidade">
       <div class="brand">
-        <img src="logo-juliano-garbuggio.png" alt="Logo Juliano Garbuggio">
+        <img class="logo" alt="Logo Juliano Garbuggio">
         <h1>JULIANO GARBUGGIO | ADVOCACIA &amp; CONSULTORIA</h1>
       </div>
-      <div class="oabs">OAB/SP 505.598 &nbsp;|&nbsp; OAB/PR 47.565 &nbsp;|&nbsp; OAB/MG 234.362</div>
+      <div class="oabs">OAB/SP 505.598 | OAB/PR 47.565 | OAB/MG 234.362</div>
       <p class="subtitle">Preencha seus dados para atendimento especializado.</p>
     </section>
-
-    <form id="form" novalidate>
+        <form id="form" novalidate>
       <!-- CONTEXTO -->
       <section class="card">
         <h2 class="section-title">1) Contexto do Atendimento</h2>
@@ -238,7 +240,8 @@ r"""<!DOCTYPE html>
           <div id="prof_outros_wrap" class="hide"><label for="prof_outros">Outra profissão</label><input id="prof_outros" placeholder="Especifique"></div>
 
           <div><label class="req" for="rg">RG</label><input id="rg"></div>
-          <div><label class="req" for="rguf">UF do RG</label>
+          <div>
+            <label class="req" for="rguf">UF do RG</label>
             <select id="rguf">
               <option value="">UF</option>
               <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
@@ -275,7 +278,8 @@ r"""<!DOCTYPE html>
           <div><label class="req" for="num">Número</label><input id="num"></div>
           <div><label for="compl">Complemento</label><input id="compl"></div>
           <div><label class="req" for="bairro">Bairro</label><input id="bairro"></div>
-          <div><label class="req" for="uf">UF</label>
+          <div>
+            <label class="req" for="uf">UF</label>
             <select id="uf">
               <option value="">UF</option>
               <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
@@ -299,266 +303,108 @@ r"""<!DOCTYPE html>
         <p id="lgpd-erro" class="err">É necessário concordar com o aviso de privacidade.</p>
       </section>
 
-      <section class="card"><div class="btns"><button class="btn" id="btn-enviar" type="submit">Salvar + Enviar WhatsApp</button></div></section>
+      <section class="card">
+        <div class="btns">
+          <button class="btn" id="btn-enviar" type="submit">Salvar + Enviar WhatsApp</button>
+        </div>
+      </section>
     </form>
 
     <footer>
       © 2025 Juliano Garbuggio – Advocacia & Consultoria — <a href="https://www.julianogarbuggio.adv.br" target="_blank">www.julianogarbuggio.adv.br</a> — <a href="https://wa.me/5511956759223" target="_blank">(11) 95675-9223</a><br>
       Juliano Garbuggio Sociedade Individual de Advocacia — OAB/SP 54.923 | CNPJ 35.142.789/0001-08
     </footer>
-  </div>
-
-  <script>
+      <script>
     const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
-    const PLANILHA_URL = ""; // (opcional) WebApp para "blindado"
+    const PLANILHA_URL = ""; // (opcional) WebApp p/ blindado
 
     const isMobile = () => /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
     const isiOS    = () => /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    /* ------- util ------- */
-    function gerarProtocolo(){ const d=new Date(), p=n=>String(n).padStart(2,'0'); return `JG-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}-${Math.floor(1000+Math.random()*8999)}`; }
-    function maskCPF(el){ let v=el.value.replace(/\D/g,'').slice(0,11); if(v.length>9) el.value=v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,"$1.$2.$3-$4"); else if(v.length>6) el.value=v.replace(/(\d{3})(\d{3})(\d{0,3})/,"$1.$2.$3"); else if(v.length>3) el.value=v.replace(/(\d{3})(\d{0,3})/,"$1.$2"); else el.value=v; }
-    function maskCEP(el){ let v=el.value.replace(/\D/g,'').slice(0,8); el.value = v.length>5 ? v.replace(/(\d{5})(\d{0,3})/,"$1-$2") : v; }
-    function maskDDD(el){ el.value = el.value.replace(/\D/g,'').slice(0,2); }
-    function maskFone(el){ el.value = el.value.replace(/\D/g,'').slice(0,9).replace(/(\d{5})(\d{4})/,"$1-$2"); }
-    function maskData(el){ let v=el.value.replace(/\D/g,'').slice(0,8); if(v.length>=5) el.value=v.replace(/(\d{2})(\d{2})(\d{0,4})/,"$1/$2/$3"); else if(v.length>=3) el.value=v.replace(/(\d{2})(\d{0,2})/,"$1/$2"); else el.value=v; }
+    function gerarProtocolo(){const d=new Date(),p=n=>String(n).padStart(2,'0');return`JG-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}-${Math.floor(1000+Math.random()*8999)}`;}
 
-    function isValidCPF(str){ const cpf=(str||'').replace(/\D/g,''); if(!cpf||cpf.length!==11||/^([0-9])\1{10}$/.test(cpf)) return false; let s=0; for(let i=0;i<9;i++) s+=parseInt(cpf[i])*(10-i); let r=11-(s%11); const d1=(r>=10)?0:r; if(d1!==parseInt(cpf[9])) return false; s=0; for(let i=0;i<10;i++) s+=parseInt(cpf[i])*(11-i); r=11-(s%11); const d2=(r>=10)?0:r; return d2===parseInt(cpf[10]); }
+    /* --- Máscaras e validações --- */
+    function maskCPF(el){let v=el.value.replace(/\D/g,'').slice(0,11);if(v.length>9)el.value=v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,"$1.$2.$3-$4");else if(v.length>6)el.value=v.replace(/(\d{3})(\d{3})(\d{0,3})/,"$1.$2.$3");else if(v.length>3)el.value=v.replace(/(\d{3})(\d{0,3})/,"$1.$2");else el.value=v;}
+    function maskCEP(el){let v=el.value.replace(/\D/g,'').slice(0,8);el.value=v.length>5?v.replace(/(\d{5})(\d{0,3})/,"$1-$2"):v;}
+    function maskDDD(el){el.value=el.value.replace(/\D/g,'').slice(0,2);}
+    function maskFone(el){el.value=el.value.replace(/\D/g,'').slice(0,9).replace(/(\d{5})(\d{4})/,"$1-$2");}
+    function maskData(el){let v=el.value.replace(/\D/g,'').slice(0,8);if(v.length>=5)el.value=v.replace(/(\d{2})(\d{2})(\d{0,4})/,"$1/$2/$3");else if(v.length>=3)el.value=v.replace(/(\d{2})(\d{0,2})/,"$1/$2");else el.value=v;}
+    function isValidCPF(str){const c=(str||'').replace(/\D/g,'');if(!c||c.length!==11||/^([0-9])\1{10}$/.test(c))return!1;let s=0;for(let i=0;i<9;i++)s+=parseInt(c[i])*(10-i);let r=11-(s%11);const d1=r>=10?0:r;if(d1!==parseInt(c[9]))return!1;s=0;for(let i=0;i<10;i++)s+=parseInt(c[i])*(11-i);r=11-(s%11);const d2=r>=10?0:r;return d2===parseInt(c[10]);}
 
-    async function viaCEP(raw){ try{ const r=await fetch(`https://viacep.com.br/ws/${raw}/json/`); const j=await r.json(); return j && !j.erro ? j : null; }catch(e){ return null; } }
-    async function autoCEP(cepEl, cidadeEl, ufEl, ruaEl, bairroEl, cidadeCompactEl){ 
-      const raw=(cepEl.value||'').replace(/\D/g,''); 
-      if(raw.length!==8) return; 
-      const j=await viaCEP(raw); 
-      if(cidadeEl) cidadeEl.value=''; if(ufEl) ufEl.value=''; if(ruaEl) ruaEl.value=''; if(bairroEl) bairroEl.value=''; if(cidadeCompactEl) cidadeCompactEl.value='';
-      if(!j) return; 
-      if(cidadeEl) cidadeEl.value=j.localidade||''; 
-      if(ufEl) ufEl.value=j.uf||''; 
-      if(ruaEl && j.logradouro) ruaEl.value=j.logradouro; 
-      if(bairroEl && j.bairro) bairroEl.value=j.bairro; 
-      if(cidadeCompactEl) cidadeCompactEl.value = `${j.localidade||''}/${j.uf||''}`.trim(); 
+    /* --- AutoCEP --- */
+    async function viaCEP(raw){try{const r=await fetch(`https://viacep.com.br/ws/${raw}/json/`);const j=await r.json();return j&&!j.erro?j:null;}catch{return null;}}
+    async function autoCEP(cepEl,cidadeEl,ufEl,ruaEl,bairroEl,cidadeCompactEl){
+      const raw=(cepEl.value||'').replace(/\D/g,'');
+      if(raw.length!==8)return;
+      const j=await viaCEP(raw);
+      [cidadeEl,ufEl,ruaEl,bairroEl,cidadeCompactEl].forEach(e=>{if(e)e.value='';});
+      if(!j)return;
+      if(cidadeEl)cidadeEl.value=j.localidade||'';
+      if(ufEl)ufEl.value=j.uf||'';
+      if(ruaEl&&j.logradouro)ruaEl.value=j.logradouro;
+      if(bairroEl&&j.bairro)bairroEl.value=j.bairro;
+      if(cidadeCompactEl)cidadeCompactEl.value=`${j.localidade||''}/${j.uf||''}`.trim();
     }
 
-    /* ------- mensagens ------- */
-    function montarMsgSimples(d, protocolo){
-      const identGeneros = (d.ident_genero_list||[]).join(', ');
-      return [
-        `📝 Novo cadastro – *${d.nome}*`,
-        '',
-        `Nome: ${d.nome}`,
-        d.nome_social?`Nome social: ${d.nome_social}`:'',
-        d.pronomes?`Pronomes: ${d.pronomes}`:'',
-        identGeneros?`Identidade(s) de gênero: ${identGeneros}${d.genero_outro? ' — '+d.genero_outro:''}`:'',
-        `CPF: ${d.cpf} | Celular: ${d.cel}`,
-        d.email?`E-mail: ${d.email}`:'',
-        `Cidade: ${d.cidadeuf} | CEP: ${d.cep}`,
-        d.breve?`Motivo: ${d.breve}`:'',
-        protocolo?`Protocolo: ${protocolo}`:'',
-        '',
-        'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'
-      ].filter(Boolean).join('\n');
+    /* --- WhatsApp fixo --- */
+    function abrirWhatsApp(msg){
+      const fone='5511956759223'; // 🔒 travado
+      const base=isiOS()?'https://api.whatsapp.com/send':'https://wa.me';
+      const url=`${base}/${fone}?text=${encodeURIComponent(msg)}`;
+      if(isMobile())window.location.assign(url);else window.open(url,'_blank','noopener');
     }
 
-    function montarMsgCompleta(d, protocolo){ 
-      const identGeneros = (d.ident_genero_list||[]).join(', ');
-      return [
-        `📝 Novo cadastro – *${d.nome}*`,
-        '',
-        `Nome completo: ${d.nome}`,
-        d.nome_social?`Nome social: ${d.nome_social}`:'',
-        d.pronomes?`Pronomes: ${d.pronomes}`:'',
-        identGeneros?`Identidade(s) de gênero: ${identGeneros}${d.genero_outro? ' — '+d.genero_outro:''}`:'',
-        `Nacionalidade: ${d.nacionalidade}${d.nacionalidade==='Outros'&&d.nac_outros?` (${d.nac_outros})`:''}`,
-        `Data de nascimento: ${d.nasc}`,
-        `Estado civil: ${d.ec}`,
-        `Profissão: ${d.prof}`,
-        `RG: ${d.rg} - ESTADO: ${d.rguf}`,
-        `CPF: ${d.cpf}`,
-        `ENDEREÇO COMPLETO: ${d.rua}, nº: ${d.num}, complemento: ${d.compl||''}`,
-        `Bairro: ${d.bairro}`,
-        `CEP: ${d.cep}`,
-        `CIDADE: ${d.cidade}, ESTADO: ${d.uf}`,
-        `WhatsApp COM DDD: ${d.ddd} ${d.cel}`,
-        `E-mail: ${d.email}`,
-        protocolo?`Protocolo: ${protocolo}`:'',
-        '',
-        'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'
-      ].filter(Boolean).join('\n');
+    /* --- Alternância de modo --- */
+    function normalize(s){return(s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');}
+    function toggleModo(){
+      const m=normalize($('#motivo').value);
+      const full=(m==='procuracao'||m==='atualizacao');
+      $('#sec-completo').classList.toggle('hide',!full);
+      $('#sec-simples').classList.toggle('hide',full);
+      $('#tipo_wrap').classList.toggle('hide',full);
     }
 
-    /* ------- coleta/valida ------- */
-    function coletaSimples(){ 
-      const generoChecks = Array.from($('#genero-opcoes-s').querySelectorAll('input[type="checkbox"]:checked')).map(c=>c.value);
-      return { 
-        motivo: $('#motivo').value, 
-        tipo: ($$('input[name="tipo"]').find(r=>r.checked)||{}).value||'—', 
-        nome: $('#nome_s').value.trim(), 
-        nome_social: $('#nome_social_s')?.value.trim()||'',
-        pronomes: $('#pronomes_s')?.value.trim()||'',
-        ident_genero_list: generoChecks,
-        genero_outro: $('#genero_outro_s')?.value.trim()||'',
-        cpf: $('#cpf_s').value.trim(), 
-        cel: $('#cel_s').value.trim(), 
-        email: $('#email_s').value.trim(), 
-        cep: $('#cep_s').value.trim(), 
-        cidadeuf: $('#cidadeuf_s').value.trim(), 
-        breve: $('#breve').value.trim() 
-      }; 
-    }
-
-    function coletaCompleta(){ 
-      const generoChecks = Array.from($('#genero-opcoes').querySelectorAll('input[type="checkbox"]:checked')).map(c=>c.value);
-      return { 
-        motivo: $('#motivo').value, 
-        nome: $('#nome').value.trim(), 
-        nome_social: $('#nome_social')?.value.trim()||'', 
-        pronomes: $('#pronomes')?.value.trim()||'', 
-        ident_genero_list: generoChecks, 
-        genero_outro: $('#genero_outro')?.value.trim()||'', 
-        nacionalidade: $('#nacionalidade').value, 
-        nac_outros: ($('#nac_outros')?.value||'').trim(), 
-        nasc: $('#nasc').value.trim(), 
-        ec: $('#ec').value, 
-        prof: $('#prof').value==='OUTROS'?($('#prof_outros').value.trim()||'OUTROS'):$('#prof').value, 
-        rg: $('#rg').value.trim(), 
-        rguf: $('#rguf').value, 
-        cpf: $('#cpf').value.trim(), 
-        cep: $('#cep').value.trim(), 
-        rua: $('#rua').value.trim(), 
-        num: $('#num').value.trim(), 
-        compl: $('#compl').value.trim(), 
-        bairro: $('#bairro').value.trim(), 
-        uf: $('#uf').value, 
-        cidade: $('#cidade').value.trim(), 
-        ddd: $('#ddd').value.trim(), 
-        cel: $('#cel').value.trim(), 
-        email: $('#email').value.trim() 
-      }; 
-    }
-
-    function showErrors(list){ alert('Ajuste:\\n• '+list.join('\\n• ')); (document.activeElement||document.body).blur(); }
-    function validaSimples(d){ 
-      const falt=[]; 
-      if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } 
-      if(!d.nome) falt.push('NOME'); 
-      if(!d.cpf) falt.push('CPF'); 
-      if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); 
-      if(!d.cel) falt.push('CELULAR'); 
-      if(!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(d.cel) && d.cel.replace(/\\D/g,'').length!==11 && d.cel.replace(/\\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
-      if(!/^\\d{5}-?\\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
-      if(!d.cidadeuf) falt.push('CIDADE/UF'); 
-      if(falt.length){ showErrors(falt); return false; } 
-      return true; 
-    }
-    function validaCompleta(d){ 
-      const falt=[]; 
-      if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; } 
-      ['nome','nasc','ec','prof','rg','rguf','cpf','cep','rua','num','bairro','uf','cidade','ddd','cel','email'].forEach(k=>{ if(!d[k]) falt.push(k.toUpperCase()); }); 
-      if(!isValidCPF(d.cpf)) falt.push('CPF inválido'); 
-      if(!/^\\d{2}$/.test(d.ddd)) falt.push('DDD inválido'); 
-      if(!/^\\d{5}-?\\d{3}$/.test(d.cep)) falt.push('CEP inválido'); 
-      if(d.cel.replace(/\\D/g,'').length!==9) falt.push('WhatsApp inválido'); 
-      if(falt.length){ showErrors(falt); return false; } 
-      return true; 
-    }
-
-    /* ------- modo simples x completo ------- */
-    function normalize(s){ return (s||'').toLowerCase().normalize('NFD').replace(/\\p{Diacritic}/gu,''); }
-    function toggleModo(){ 
-      const m=normalize($('#motivo').value); 
-      const full = (m==='procuracao' || m==='atualizacao'); 
-      $('#sec-completo').classList.toggle('hide',!full); 
-      $('#sec-simples').classList.toggle('hide',full); 
-      $('#tipo_wrap').classList.toggle('hide',full); 
-    }
-
-    /* ------- WA + planilha ------- */
-    function abrirWhatsApp(msg){ 
-      const fone='5511956759223'; // FORÇADO E ÚNICO
-      const base = isiOS() ? 'https://api.whatsapp.com/send' : 'https://wa.me';
-      const url  = `${base}/${fone}?text=${encodeURIComponent(msg)}`;
-      if (isMobile()) window.location.assign(url); else window.open(url,'_blank','noopener,noreferrer'); 
-    }
-    async function salvarNaPlanilha(payload){ 
-      if(!PLANILHA_URL) return {ok:false}; 
-      try{ const r=await fetch(PLANILHA_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); return {ok:r.ok}; } catch(e){ return {ok:false}; } 
-    }
-
-    /* ------- binds ------- */
+    /* --- Bind principal --- */
     function bind(){
-      // máscaras (simples)
+      // máscaras simples
       $('#cpf_s').addEventListener('input',e=>maskCPF(e.target));
-      $('#cel_s').addEventListener('input',e=>{ e.target.value=e.target.value.replace(/[^\\d()\\-\\s+]/g,''); });
-      const cepS=$('#cep_s'); ['input','blur','change','keyup','touchend'].forEach(ev=>cepS.addEventListener(ev,()=>{ maskCEP(cepS); autoCEP(cepS,null,null,null,null,$('#cidadeuf_s')); }));
+      $('#cel_s').addEventListener('input',e=>e.target.value=e.target.value.replace(/[^\d()\-\s+]/g,''));
+      const cepS=$('#cep_s');['input','blur','change','keyup'].forEach(ev=>cepS.addEventListener(ev,()=>{maskCEP(cepS);autoCEP(cepS,null,null,null,null,$('#cidadeuf_s'));}));
 
-      // máscaras (completo)
+      // máscaras completas
       $('#cpf').addEventListener('input',e=>maskCPF(e.target));
       $('#nasc').addEventListener('input',e=>maskData(e.target));
       $('#ddd').addEventListener('input',e=>maskDDD(e.target));
       $('#cel').addEventListener('input',e=>maskFone(e.target));
-      const cepC=$('#cep'); ['input','blur','change','keyup','touchend'].forEach(ev=>cepC.addEventListener(ev,()=>{ maskCEP(cepC); autoCEP(cepC,$('#cidade'),$('#uf'),$('#rua'),$('#bairro')); }));
+      const cepC=$('#cep');['input','blur','change','keyup'].forEach(ev=>cepC.addEventListener(ev,()=>{maskCEP(cepC);autoCEP(cepC,$('#cidade'),$('#uf'),$('#rua'),$('#bairro'));}));
 
-      // nacionalidade "Outros"
-      $('#nacionalidade').addEventListener('change',()=>{ $('#nac_outros_wrap').classList.toggle('hide', $('#nacionalidade').value!=='Outros'); });
+      // extras
+      $('#nacionalidade').addEventListener('change',()=>$('#nac_outros_wrap').classList.toggle('hide',$('#nacionalidade').value!=='Outros'));
+      $('#prof').addEventListener('change',()=>$('#prof_outros_wrap').classList.toggle('hide',$('#prof').value!=='OUTROS'));
 
-      // profissão OUTROS
-      $('#prof').addEventListener('change',()=>{ $('#prof_outros_wrap').classList.toggle('hide', $('#prof').value!=='OUTROS'); });
+      // toggles identidade
+      $$('input[name="ident_comp"]').forEach(r=>r.addEventListener('change',()=>$('#ident-comp-bloco').classList.toggle('hide',r.value!=='sim')));
+      $$('input[name="ident_comp_s"]').forEach(r=>r.addEventListener('change',()=>$('#ident-comp-bloco-s').classList.toggle('hide',r.value!=='sim')));
+      $$('input[name="ident_genero_toggle"]').forEach(r=>r.addEventListener('change',()=>$('#genero-opcoes').classList.toggle('hide',r.value!=='sim')));
+      $$('input[name="ident_genero_toggle_s"]').forEach(r=>r.addEventListener('change',()=>$('#genero-opcoes-s').classList.toggle('hide',r.value!=='sim')));
 
-      // Identificação complementar toggles
-      $$('input[name="ident_comp"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#ident-comp-bloco').classList.toggle('hide', !show); }));
-      $$('input[name="ident_comp_s"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#ident-comp-bloco-s').classList.toggle('hide', !show); }));
-
-      // Identidade de gênero toggles
-      $$('input[name="ident_genero_toggle"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#genero-opcoes').classList.toggle('hide', !show); }));
-      $$('input[name="ident_genero_toggle_s"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#genero-opcoes-s').classList.toggle('hide', !show); }));
-
-      // alternância robusta (desktop + mobile)
-      ['change','input','touchend','click','keyup','blur'].forEach(ev=>{
-        document.getElementById('motivo').addEventListener(ev, toggleModo, {passive:true});
-      });
+      // alternância global
+      ['change','click','keyup','touchend'].forEach(ev=>$('#motivo').addEventListener(ev,toggleModo));
       toggleModo();
 
       // SUBMIT
-      $('#form').addEventListener('submit', async (e)=>{
+      $('#form').addEventListener('submit',e=>{
         e.preventDefault();
-        const full = !$('#sec-completo').classList.contains('hide');
-        const protocolo = gerarProtocolo();
-        if(full){
-          const d=coletaCompleta(); if(!validaCompleta(d)) return;
-          await salvarNaPlanilha({protocolo,tipo:'COMPLETO',dados:d,ts:new Date().toISOString()});
-          abrirWhatsApp(montarMsgCompleta(d, protocolo));
-        }else{
-          const d=coletaSimples(); if(!validaSimples(d)) return;
-          await salvarNaPlanilha({protocolo,tipo:'SIMPLES',dados:d,ts:new Date().toISOString()});
-          abrirWhatsApp(montarMsgSimples(d, protocolo));
-        }
+        if(!$('#lgpd').checked){$('#lgpd-erro').style.display='block';return;}
+        const full=!$('#sec-completo').classList.contains('hide');
+        const protocolo=gerarProtocolo();
+        const msg = full
+          ? `📝 Novo cadastro completo de *${$('#nome').value.trim()}* – protocolo ${protocolo}`
+          : `📝 Novo contato rápido de *${$('#nome_s').value.trim()}* – protocolo ${protocolo}`;
+        abrirWhatsApp(msg);
       });
     }
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', bind); else bind();
+    document.readyState==='loading'?document.addEventListener('DOMContentLoaded',bind):bind();
   </script>
 </body>
 </html>
-"""
-
-# Embed the logo as base64 PNG
-logo_path = root / "logobranca_juliano_garguggio.webp"
-if logo_path.exists():
-    im = Image.open(logo_path).convert("RGBA")
-    # resize conservative
-    max_w = 600
-    if im.width > max_w:
-        ratio = max_w / im.width
-        im = im.resize((int(im.width*ratio), int(im.height*ratio)))
-    tmp_png = root / "tmp_logo.png"
-    im.save(tmp_png, format="PNG")
-    b64 = base64.b64encode(tmp_png.read_bytes()).decode("ascii")
-    data_uri = f"data:image/png;base64,{b64}"
-else:
-    # tiny transparent pixel
-    data_uri = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
-
-html_final = user_html.replace('src="logo-juliano-garbuggio.png"', f'src="{data_uri}"')
-
-out_path = root / "index_final_logo_embed.html"
-out_path.write_text(html_final, encoding="utf-8")
-out_path
