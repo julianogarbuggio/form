@@ -3,449 +3,613 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>Formulário | Juliano Garbuggio – Advocacia & Consultoria</title>
+  <title>Formulário – Atendimento Jurídico Especializado</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #0f1222;
-      --card: #171a2e;
-      --ink: #e9ecff;
-      --muted: #a9b0d6;
-      --pri: #6c8cff;
-      --pri-ink: #0a0e2b;
-      --warn: #ffd166;
-      --border: #2a2e4b;
-      --accent: #b8c6ff;
+    :root{
+      --bg:#0f1222; --card:#171a2e; --ink:#e9ecff; --muted:#a9b0d6;
+      --pri:#6c8cff; --pri-ink:#0a0e2b; --warn:#ffd166; --border:#2a2e4b;
+      --accent:#b8c6ff;
     }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+    .wrap{max-width:980px;margin:24px auto;padding:0 16px}
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.5;
-    }
+    /* HEADER */
+    .hero{background:linear-gradient(180deg,#1c203d,#12152a);border:1px solid var(--border);border-radius:16px;padding:18px 18px 22px;margin-bottom:18px}
+    .brand{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .brand img{max-width:260px;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+    .brand h1{margin:0 0 6px;font-weight:800;letter-spacing:.8px;text-align:center;text-transform:uppercase}
+    .oabs{font-size:.82rem;color:var(--muted);margin-top:8px;text-align:right}
+    .subtitle{margin:.35rem 0 0;color:#fff;font-weight:700;text-align:center;font-size:1.08rem}
 
-    .wrap {
-      max-width: 960px;
-      margin: 24px auto;
-      padding: 0 16px;
-    }
+    /* CARDS */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin:14px 0}
+    .section-title{margin:0 0 8px;font-weight:700;font-size:1.06rem}
 
-    /* ===== HEADER ===== */
-    .hero {
-      background: linear-gradient(180deg, #1c203d, #12152a);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 18px 28px;
-      margin-bottom: 18px;
-      text-align: center;
-    }
+    /* GRID + FORMS */
+    .grid{display:grid;gap:12px}
+    @media (min-width:720px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
+    label{display:block;font-size:.88rem;color:var(--muted);margin:4px 0 6px}
+    input,select,textarea{width:100%;background:#0f1330;color:var(--ink);border:1px solid var(--border);border-radius:10px;padding:12px 12px;outline:none}
+    textarea{min-height:96px;resize:vertical}
+    .hide{display:none}
 
-    .brand img {
-      max-width: 240px;
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto 12px;
-      filter: drop-shadow(0 2px 2px rgba(0,0,0,.35));
-    }
+    /* pills / chips */
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;margin:6px 8px 0 0}
+    .pill input{margin-right:4px}
+    .chips{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:10px}
+    @media (min-width:520px){ .chips{grid-template-columns:repeat(3, minmax(0,1fr));} }
+    .chip{display:flex;align-items:center;gap:8px;border:1px solid var(--border);padding:10px 12px;border-radius:10px}
+    .chip input{transform:scale(1.1)}
 
-    .hero h1 {
-      margin: 8px 0;
-      font-weight: 800;
-      font-size: 1.7rem;
-      color: #fff;
-      letter-spacing: .7px;
-    }
-
-    .oabs {
-      font-size: .82rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .subtitle {
-      color: var(--accent);
-      font-weight: 600;
-      margin-top: 12px;
-      font-size: 1.05rem;
-    }
-
-    /* ===== FORM ===== */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      margin: 16px 0;
-    }
-
-    label {
-      display: block;
-      font-size: .92rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      background: #0f1330;
-      color: var(--ink);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      outline: none;
-    }
-
-    textarea { resize: vertical; min-height: 90px; }
-
-    .section-title {
-      margin: 0 0 10px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #fff;
-    }
-
-    .inline {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #10132b;
-      cursor: pointer;
-    }
-
-    .pill input[type="radio"], .pill input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--pri);
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--pri);
-      color: var(--pri-ink);
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 18px;
-      text-align: center;
-      width: 100%;
-      cursor: pointer;
-      margin-top: 12px;
-    }
-
-    .btn:hover { background: #7a98ff; }
-
-    footer {
-      text-align: center;
-      margin: 30px 0 20px;
-      color: var(--muted);
-      font-size: .84rem;
-    }
-
-    hr.sep {
-      border: 0;
-      border-top: 1px dashed var(--border);
-      margin: 18px 0;
-    }
-
-    /* ===== IDENTIDADE DE GÊNERO ===== */
-    .chips {
-      display: grid;
-      gap: 10px;
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 580px) {
-      .chips { grid-template-columns: 1fr 1fr; }
-    }
-
-    .chip {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #0f1330;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 8px 10px;
-    }
-
-    .chip input { width: 18px; height: 18px; accent-color: var(--pri); }
-
+    .btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer;background:var(--pri);color:var(--pri-ink)}
+    .req::after{content:" *";color:var(--warn);font-weight:700}
+    .callout{background:#13273a;border:1px solid #1b3953;padding:12px 14px;border-radius:12px;margin-top:16px}
+    a{color:var(--accent);text-decoration:none}
+    footer{text-align:center;margin:30px 0 20px;color:var(--muted);font-size:.85rem}
+    .err{color:#ff6b6b;font-size:.9rem;display:none}
+    hr.sep{border:0;border-top:1px dashed var(--border);margin:14px 0}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header class="hero">
+    <!-- HEADER -->
+    <section class="hero" aria-label="Identidade">
       <div class="brand">
-        <picture>
-          <source srcset="logo-juliano-garbuggio.png" type="image/png">
-          <img src="Juliano-Garbuggio-Colorida.png" alt="Logo Juliano Garbuggio" />
-        </picture>
+        <!-- Se a sua logo tiver outro nome, troque apenas o src abaixo -->
+        <img src="logo-juliano-garbuggio.png" alt="Logo Juliano Garbuggio">
+        <h1>JULIANO GARBUGGIO | ADVOCACIA &amp; CONSULTORIA</h1>
       </div>
-      <h1>JULIANO GARBUGGIO | ADVOCACIA & CONSULTORIA</h1>
-      <div class="oabs">OAB/SP 505.598 | OAB/PR 47.565 | OAB/MG 234.362</div>
-      <div class="subtitle">Preencha seus dados para atendimento especializado.</div>
-    </header>
+      <div class="oabs">OAB/SP 505.598 &nbsp;|&nbsp; OAB/PR 47.565 &nbsp;|&nbsp; OAB/MG 234.362</div>
+      <p class="subtitle">Preencha seus dados para atendimento especializado.</p>
+    </section>
 
-    <!-- FORM -->
-    <form id="form" class="card">
-      <h2 class="section-title">1) Contexto do Atendimento</h2>
+    <form id="form" novalidate>
+      <!-- CONTEXTO -->
+      <section class="card">
+        <h2 class="section-title">1) Contexto do Atendimento</h2>
+        <div class="grid cols-2">
+          <div>
+            <label class="req" for="motivo">Motivo do atendimento</label>
+            <select id="motivo" required>
+              <option value="">Selecione…</option>
+              <option value="cadastro_procuracao">1 — Atualização de cadastro | Procuração</option>
+              <option value="info_revisoes">2 — Info Revisões de Empréstimos (bancos)</option>
+              <option value="info_outras_acoes">3 — Info Outras Ações</option>
+              <option value="outras_duvidas">4 — Outras dúvidas, sugestões, críticas</option>
+            </select>
+          </div>
 
-      <label for="motivo">Motivo do atendimento *</label>
-      <select id="motivo" name="motivo" required>
-        <option value="Revisão de empréstimos">Revisão de empréstimos</option>
-        <option value="Procuração">Procuração</option>
-        <option value="Atualização de cadastro">Atualização de cadastro</option>
-      </select>
-
-      <label>Tipo de contato *</label>
-      <div class="chips">
-        <label class="pill"><input type="radio" name="tipo" value="Consignado INSS" required>Consignado INSS</label>
-        <label class="pill"><input type="radio" name="tipo" value="Consignado público/privado">Consignado público/privado</label>
-        <label class="pill"><input type="radio" name="tipo" value="Financiamento bancário">Financiamento bancário</label>
-        <label class="pill"><input type="radio" name="tipo" value="Direito Digital">Direito Digital</label>
-        <label class="pill"><input type="radio" name="tipo" value="Direito Médico">Direito Médico</label>
-        <label class="pill"><input type="radio" name="tipo" value="Outros casos Direito Consumidor / Civil">Outros casos Direito Consumidor | Civil</label>
-        <label class="pill"><input type="radio" name="tipo" value="Dúvida geral">Dúvida geral</label>
-      </div>
-
-      <hr class="sep">
-
-      <h2 class="section-title">2) Dados para contato</h2>
-
-      <label for="nome">Nome completo *</label>
-      <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-
-      <div class="inline">
-        <div style="flex:1">
-          <label for="cpf">CPF *</label>
-          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+          <div id="tipo_wrap">
+            <label class="req">Tipo de contato</label>
+            <div>
+              <label class="pill"><input type="radio" name="tipo" value="Consignado INSS" required> Consignado INSS</label>
+              <label class="pill"><input type="radio" name="tipo" value="Consignado público/privado"> Consignado público/privado</label>
+              <label class="pill"><input type="radio" name="tipo" value="Financiamento bancário"> Financiamento bancário</label>
+              <label class="pill"><input type="radio" name="tipo" value="Direito Digital"> Direito Digital</label>
+              <label class="pill"><input type="radio" name="tipo" value="Direito Médico"> Direito Médico</label>
+              <label class="pill"><input type="radio" name="tipo" value="Outros casos Direito Consumidor | Civil"> Outros casos Direito Consumidor | Civil</label>
+              <label class="pill"><input type="radio" name="tipo" value="Dúvida geral"> Dúvida geral</label>
+            </div>
+          </div>
         </div>
-        <div style="flex:1">
-          <label for="whats">WhatsApp *</label>
-          <input type="tel" id="whats" name="whats" placeholder="(11) 95675-9223" required>
+      </section>
+
+      <!-- DADOS SIMPLES (para as opções 2, 3 e 4) -->
+      <section class="card" id="sec-simples">
+        <h2 class="section-title">2) Dados para contato</h2>
+        <div class="grid cols-2">
+          <div><label class="req" for="nome_s">Nome completo</label><input id="nome_s" required></div>
+          <div><label class="req" for="cpf_s">CPF</label><input id="cpf_s" placeholder="000.000.000-00" required></div>
+
+          <!-- Identificação complementar (opcional) – SIMPLES -->
+          <div style="grid-column:1/-1">
+            <label>Identificação complementar (opcional)</label>
+            <div class="pill"><input type="radio" name="ident_comp_s" value="sim"> Sim</div>
+            <div class="pill"><input type="radio" name="ident_comp_s" value="nao" checked> Não</div>
+          </div>
+          <div id="ident-comp-bloco-s" class="hide" style="grid-column:1/-1">
+            <div class="grid cols-2">
+              <div><label for="nome_social_s">Nome social</label><input id="nome_social_s" placeholder="Opcional"></div>
+              <div><label for="pronomes_s">Pronomes (ex.: ela/dela, ele/dele, elu/delu)</label><input id="pronomes_s" placeholder="Opcional"></div>
+            </div>
+            <hr class="sep">
+          </div>
+
+          <!-- Identidade de gênero (opcional) – SIMPLES -->
+          <div style="grid-column:1/-1">
+            <label>Auto Declaração – Identidade de Gênero (opcional)</label>
+            <div class="pill"><input type="radio" name="ident_genero_toggle_s" value="sim"> Sim</div>
+            <div class="pill"><input type="radio" name="ident_genero_toggle_s" value="nao" checked> Não</div>
+            <div id="genero-opcoes-s" class="hide" style="margin-top:10px">
+              <div class="chips">
+                <label class="chip"><input type="checkbox" value="Mulher cisgênera"> Mulher cisgênera</label>
+                <label class="chip"><input type="checkbox" value="Homem cisgênero"> Homem cisgênero</label>
+                <label class="chip"><input type="checkbox" value="Mulher transgênera"> Mulher transgênera</label>
+                <label class="chip"><input type="checkbox" value="Homem transgênero"> Homem transgênero</label>
+                <label class="chip"><input type="checkbox" value="Travesti"> Travesti</label>
+                <label class="chip"><input type="checkbox" value="Não-binárie"> Não-binárie</label>
+                <label class="chip"><input type="checkbox" value="Prefiro não dizer"> Prefiro não dizer</label>
+                <label class="chip">Outro: <input id="genero_outro_s" placeholder="especifique" style="flex:1;min-width:120px"></label>
+              </div>
+            </div>
+          </div>
+
+          <div><label class="req" for="cel_s">WhatsApp</label><input id="cel_s" placeholder="(11) 9xxxx-xxxx" required></div>
+          <div><label for="email_s">E-mail</label><input id="email_s" type="email" placeholder="voce@email.com"></div>
+          <div><label class="req" for="cep_s">CEP</label><input id="cep_s" placeholder="00000-000" required></div>
+          <div><label class="req" for="cidadeuf_s">Cidade/UF</label><input id="cidadeuf_s" placeholder="Cidade/UF" required></div>
+          <div class="cols-2" style="grid-column:1/-1">
+            <label for="breve">Relate brevemente o motivo do contato</label>
+            <textarea id="breve" placeholder="Ex.: cobrança indevida, dúvida sobre contrato, etc."></textarea>
+          </div>
         </div>
-      </div>
+      </section>
+            <!-- DADOS COMPLETOS – (abrem na opção 1) -->
+      <section class="card hide" id="sec-completo">
+        <h2 class="section-title">2) Dados pessoais (complementares)</h2>
 
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" placeholder="voce@email.com">
+        <div class="grid cols-2">
+          <div><label class="req" for="nome">Nome completo</label><input id="nome"></div>
 
-      <label for="mensagem">Relate brevemente o motivo do contato</label>
-      <textarea id="mensagem" name="mensagem" placeholder="Explique brevemente o motivo do contato"></textarea>
+          <!-- Identificação complementar (opcional) -->
+          <div style="grid-column:1/-1">
+            <label>Identificação complementar (opcional)</label>
+            <div class="inline">
+              <label class="pill"><input type="radio" name="ident_comp" value="sim"> Sim</label>
+              <label class="pill"><input type="radio" name="ident_comp" value="nao" checked> Não</label>
+            </div>
+          </div>
+          <div id="ident-comp-bloco" class="hide" style="grid-column:1/-1">
+            <div class="grid cols-2">
+              <div><label for="nome_social">Nome social</label><input id="nome_social" placeholder="Opcional"></div>
+              <div><label for="pronomes">Pronomes (ex.: ela/dela, ele/dele, elu/delu)</label><input id="pronomes" placeholder="Opcional"></div>
+            </div>
+            <hr class="sep">
+          </div>
 
-      <hr class="sep">
+          <div>
+            <label class="req" for="nacionalidade">Nacionalidade</label>
+            <select id="nacionalidade">
+              <option>Brasileiro(a)</option>
+              <option>Outros</option>
+            </select>
+          </div>
+          <div id="nac_outros_wrap" class="hide">
+            <label for="nac_outros">Qual?</label><input id="nac_outros" placeholder="Sua nacionalidade">
+          </div>
 
-      <h2 class="section-title">Identificação complementar (opcional)</h2>
-      <div class="inline">
-        <label class="pill"><input type="radio" name="ident_toggle" value="Sim">Sim</label>
-        <label class="pill"><input type="radio" name="ident_toggle" value="Não" checked>Não</label>
-      </div>
+          <div>
+            <label class="req" for="nasc">Data de nascimento (dd/mm/aaaa)</label>
+            <input id="nasc" placeholder="dd/mm/aaaa" inputmode="numeric" maxlength="10">
+          </div>
 
-      <div id="ident_extra" style="display:none">
-        <label for="nome_social">Nome social</label>
-        <input type="text" id="nome_social" name="nome_social" placeholder="Nome social">
+          <div>
+            <label class="req" for="ec">Estado civil</label>
+            <select id="ec">
+              <option value="">Selecione…</option>
+              <option>Solteira(o)</option>
+              <option>Casada(o)</option>
+              <option>União estável</option>
+              <option>Divorciada(o)</option>
+              <option>Viúva(o)</option>
+            </select>
+          </div>
 
-        <label for="pronomes">Pronomes (ex.: ela/dela, ele/dele, elu/delu)</label>
-        <input type="text" id="pronomes" name="pronomes" placeholder="Digite seus pronomes">
-      </div>
+          <div>
+            <label class="req" for="prof">Profissão</label>
+            <select id="prof">
+              <option value="">Selecione a profissão</option>
 
-      <hr class="sep">
+              <optgroup label="Área Administrativa e Financeira">
+                <option>Administrador</option><option>Assistente Administrativo</option><option>Secretário(a)</option>
+                <option>Contador</option><option>Analista Financeiro</option><option>Gestor de RH</option>
+                <option>Auxiliar de Escritório</option><option>Recepcionista</option><option>Office Boy / Mensageiro</option>
+                <option>Economista</option><option>Funcionário Público</option>
+              </optgroup>
 
-      <h2 class="section-title">Auto Declaração - Identidade de Gênero (opcional)</h2>
-      <div class="inline">
-        <label class="pill"><input type="radio" name="ident_genero_toggle" value="Sim">Sim</label>
-        <label class="pill"><input type="radio" name="ident_genero_toggle" value="Não" checked>Não</label>
-      </div>
+              <optgroup label="Área Técnica e Industrial">
+                <option>Engenheiro Civil</option><option>Engenheiro Elétrico</option><option>Técnico em Edificações</option>
+                <option>Técnico em Mecânica</option><option>Técnico em Eletrônica</option><option>Mecânico</option>
+                <option>Eletricista</option><option>Encanador</option><option>Operador de Máquinas</option><option>Soldador</option>
+              </optgroup>
 
-      <div id="ident_genero" style="display:none">
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="genero" value="Mulher cisgênera">Mulher cisgênera</label>
-          <label class="chip"><input type="checkbox" name="genero" value="Homem cisgênero">Homem cisgênero</label>
-          <label class="chip"><input type="checkbox" name="genero" value="Mulher transgênera">Mulher transgênera</label>
-          <label class="chip"><input type="checkbox" name="genero" value="Homem transgênero">Homem transgênero</label>
-          <label class="chip"><input type="checkbox" name="genero" value="Travesti">Travesti</label>
-          <label class="chip"><input type="checkbox" name="genero" value="Não-binárie">Não-binárie</label>
-          <label class="chip"><input type="checkbox" name="genero" value="Prefiro não dizer">Prefiro não dizer</label>
-          <label class="chip"><input type="checkbox" name="genero" value="Outro">Outro (especifique): <input type="text" name="genero_outro" style="flex:1;background:#0f1330;color:#fff;border:none;padding:6px;"></label>
+              <optgroup label="Comércio e Serviços">
+                <option>Comerciante</option><option>Vendedor</option><option>Representante Comercial</option><option>Caixa</option>
+                <option>Supervisor de Vendas</option><option>Garçom / Garçonete</option><option>Balconista</option>
+                <option>Atendente</option><option>Motorista</option><option>Entregador</option>
+              </optgroup>
+
+              <optgroup label="Saúde e Bem-Estar">
+                <option>Médico</option><option>Enfermeiro</option><option>Técnico de Enfermagem</option><option>Dentista</option>
+                <option>Fisioterapeuta</option><option>Psicólogo</option><option>Nutricionista</option><option>Farmacêutico</option>
+                <option>Cuidador de Idosos</option><option>Esteticista</option><option>Biomédico</option>
+              </optgroup>
+
+              <optgroup label="Educação e Cultura">
+                <option>Professor</option><option>Pedagogo</option><option>Bibliotecário</option><option>Coordenador Escolar</option>
+                <option>Instrutor / Educador Social</option><option>Tradutor / Intérprete</option>
+              </optgroup>
+
+              <optgroup label="Construção Civil">
+                <option>Pedreiro</option><option>Servente</option><option>Mestre de Obras</option><option>Pintor</option>
+                <option>Carpinteiro</option><option>Azulejista</option><option>Jardineiro</option>
+              </optgroup>
+
+              <optgroup label="Tecnologia da Informação">
+                <option>Analista de Sistemas</option><option>Desenvolvedor</option><option>Programador</option>
+                <option>Suporte Técnico</option><option>Técnico de Informática</option><option>Designer Gráfico</option>
+                <option>Analista de Dados</option>
+              </optgroup>
+
+              <optgroup label="Jurídico e Contábil">
+                <option>Advogado</option><option>Estagiário de Direito</option><option>Técnico Contábil</option>
+                <option>Perito</option><option>Consultor Jurídico</option>
+              </optgroup>
+
+              <optgroup label="Beleza, Moda e Estética">
+                <option>Cabeleireiro</option><option>Manicure / Pedicure</option><option>Maquiador</option>
+                <option>Costureiro</option><option>Designer de Sobrancelhas</option><option>Consultor de Moda</option>
+              </optgroup>
+
+              <optgroup label="Segurança e Transporte">
+                <option>Policial</option><option>Bombeiro</option><option>Vigilante</option><option>Segurança Patrimonial</option>
+                <option>Motorista Particular</option><option>Motoboy</option>
+              </optgroup>
+
+              <optgroup label="Agricultura e Campo">
+                <option>Agricultor</option><option>Pecuarista</option><option>Trabalhador Rural</option><option>Pescador</option><option>Jardineiro</option>
+              </optgroup>
+
+              <optgroup label="Turismo e Hotelaria">
+                <option>Guia Turístico</option><option>Agente de Viagens</option><option>Recepcionista de Hotel</option>
+                <option>Camareira</option><option>Cozinheiro / Chef</option><option>Garçom</option>
+              </optgroup>
+
+              <optgroup label="Artes e Comunicação">
+                <option>Jornalista</option><option>Publicitário</option><option>Fotógrafo</option><option>Designer</option>
+                <option>Músico</option><option>Artista Plástico</option><option>Redator</option>
+              </optgroup>
+
+              <option value="OUTROS">OUTROS</option>
+            </select>
+          </div>
+
+          <div id="prof_outros_wrap" class="hide">
+            <label for="prof_outros">Outra profissão</label>
+            <input id="prof_outros" placeholder="Especifique">
+          </div>
+
+          <div><label class="req" for="rg">RG</label><input id="rg"></div>
+          <div>
+            <label class="req" for="rguf">UF do RG</label>
+            <select id="rguf">
+              <option value="">UF</option>
+              <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option>
+              <option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option>
+              <option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option>
+              <option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
+            </select>
+          </div>
+          <div><label class="req" for="cpf">CPF</label><input id="cpf" placeholder="000.000.000-00"></div>
         </div>
-      </div>
 
-      <hr class="sep">
+        <!-- Identidade de gênero (opcional) -->
+        <div style="margin-top:8px">
+          <label>Auto Declaração – Identidade de Gênero (opcional)</label>
+          <div class="inline">
+            <label class="pill"><input type="radio" name="ident_genero_toggle" value="sim"> Sim</label>
+            <label class="pill"><input type="radio" name="ident_genero_toggle" value="nao" checked> Não</label>
+          </div>
+          <div id="genero-opcoes" class="hide" style="margin-top:10px">
+            <div class="chips">
+              <label class="chip"><input type="checkbox" value="Mulher cisgênera"> Mulher cisgênera</label>
+              <label class="chip"><input type="checkbox" value="Homem cisgênero"> Homem cisgênero</label>
+              <label class="chip"><input type="checkbox" value="Mulher transgênera"> Mulher transgênera</label>
+              <label class="chip"><input type="checkbox" value="Homem transgênero"> Homem transgênero</label>
+              <label class="chip"><input type="checkbox" value="Travesti"> Travesti</label>
+              <label class="chip"><input type="checkbox" value="Não-binárie"> Não-binárie</label>
+              <label class="chip"><input type="checkbox" value="Prefiro não dizer"> Prefiro não dizer</label>
+              <label class="chip">Outro: <input id="genero_outro" placeholder="especifique" style="width:220px"></label>
+            </div>
+          </div>
+        </div>
 
-      <label><input type="checkbox" id="lgpd" required> Li e concordo com o Aviso de Privacidade e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).</label>
-      <button type="submit" class="btn">Salvar e Enviar WhatsApp</button>
-    </form>
+        <h2 class="section-title" style="margin-top:14px">Endereço</h2>
+        <div class="grid cols-2">
+          <div><label class="req" for="cep">CEP</label><input id="cep" placeholder="00000-000"></div>
+          <div><label class="req" for="rua">Rua / Avenida</label><input id="rua"></div>
+          <div><label class="req" for="num">Número</label><input id="num"></div>
+          <div><label for="compl">Complemento</label><input id="compl"></div>
+          <div><label class="req" for="bairro">Bairro</label><input id="bairro"></div>
+          <div>
+            <label class="req" for="uf">UF</label>
+            <select id="uf">
+              <option value="">UF</option>
+              <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option>
+              <option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option>
+              <option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option>
+              <option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
+            </select>
+          </div>
+          <div><label class="req" for="cidade">Cidade</label><input id="cidade"></div>
+        </div>
 
-    <footer>
-      © 2025 Juliano Garbuggio – Advocacia & Consultoria — www.julianogarbuggio.adv.br<br>
-      Juliano Garbuggio Sociedade Individual de Advocacia — OAB/SP 54.923 | CNPJ 35.142.789/0001-08<br>
-      (11) 95675-9223
-    </footer>
-  </div>
-  <script>
-  // ===== Utilidades =====
-  const $ = (s) => document.querySelector(s);
-  const $$ = (s) => Array.from(document.querySelectorAll(s));
+        <h2 class="section-title" style="margin-top:14px">Contato</h2>
+        <div class="grid cols-2">
+          <div><label class="req" for="ddd">WhatsApp — DDD</label><input id="ddd" placeholder="11"></div>
+          <div><label class="req" for="cel">Número</label><input id="cel" placeholder="95675-9223"></div>
+          <div><label class="req" for="email">E-mail</label><input id="email" type="email" placeholder="voce@email.com"></div>
+        </div>
+      </section>
 
-  // máscaras
-  function maskCPF(el){
-    let v = (el.value||'').replace(/\D/g,'').slice(0,11);
-    if(v.length>9) el.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, "$1.$2.$3-$4");
-    else if(v.length>6) el.value = v.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
-    else if(v.length>3) el.value = v.replace(/(\d{3})(\d{0,3})/, "$1.$2");
-    else el.value = v;
-  }
-  function maskWhats(el){
-    let v = (el.value||'').replace(/\D/g,'').slice(0,11);
-    if(v.length>6) el.value = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
-    else if(v.length>2) el.value = v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
-    else el.value = v;
-  }
+      <!-- LGPD + Envio -->
+      <section class="card callout" id="lgpd-bloco">
+        <p><strong>Envio direto ao WhatsApp Business de Juliano Garbuggio:</strong> ao prosseguir, o conteúdo será preparado para envio no aplicativo. Seus dados serão tratados exclusivamente para fins de atendimento confidencial, conforme a LGPD e o sigilo profissional da OAB.</p>
+        <label><input type="checkbox" id="lgpd" required> Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).</label>
+        <p id="lgpd-erro" class="err">É necessário concordar com o aviso de privacidade.</p>
+      </section>
 
-  // valida CPF
-  function isValidCPF(str){
-    const cpf = (str||'').replace(/\D/g,'');
-    if (!cpf || cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
-    let s = 0;
-    for (let i=0;i<9;i++) s += parseInt(cpf[i])*(10-i);
-    let r = 11 - (s%11); const d1 = r>=10?0:r;
-    if (d1 !== parseInt(cpf[9])) return false;
-    s = 0;
-    for (let i=0;i<10;i++) s += parseInt(cpf[i])*(11-i);
-    r = 11 - (s%11); const d2 = r>=10?0:r;
-    return d2 === parseInt(cpf[10]);
-  }
+      <section class="card">
+        <div class="btns">
+          <button class="btn" id="btn-enviar" type="submit">Salvar + Enviar WhatsApp</button>
+        </div>
+      </section>
+        <script>
+    /* ===== Shortcuts ===== */
+    const $  = (s)=>document.querySelector(s);
+    const $$ = (s)=>Array.from(document.querySelectorAll(s));
 
-  // protocolo
-  function gerarProtocolo(){
-    const d=new Date(), p=n=>String(n).padStart(2,'0');
-    return `JG-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}-${Math.floor(1000+Math.random()*8999)}`;
-  }
+    /* ===== Detecção de dispositivo ===== */
+    const isMobile = ()=> /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    const isiOS    = ()=> /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-  // coleta chips selecionados
-  function getCheckedValues(name){
-    return $$(`input[name="${name}"]:checked`).map(c=>c.value);
-  }
-
-  // mostra/oculta blocos opcionais
-  function setupToggles(){
-    $$('input[name="ident_toggle"]').forEach(r=>{
-      r.addEventListener('change', ()=>{
-        const show = r.value === 'Sim' && r.checked;
-        $('#ident_extra').style.display = show ? 'block' : 'none';
-      });
-    });
-    $$('input[name="ident_genero_toggle"]').forEach(r=>{
-      r.addEventListener('change', ()=>{
-        const show = r.value === 'Sim' && r.checked;
-        $('#ident_genero').style.display = show ? 'block' : 'none';
-      });
-    });
-  }
-
-  // monta mensagem (cadastro + protocolo)
-  function montarMensagem(){
-    const nome = $('#nome').value.trim();
-    const cpf  = $('#cpf').value.trim();
-    const whats = $('#whats').value.trim();
-    const email = $('#email').value.trim();
-    const motivo = $('#motivo').value;
-    const tipo = ($$('input[name="tipo"]').find(r=>r.checked)||{}).value || '—';
-    const breve = $('#mensagem').value.trim();
-
-    const identON   = $$('input[name="ident_toggle"]').find(r=>r.checked)?.value === 'Sim';
-    const nomeSocial= $('#nome_social').value.trim();
-    const pronomes  = $('#pronomes').value.trim();
-
-    const genON     = $$('input[name="ident_genero_toggle"]').find(r=>r.checked)?.value === 'Sim';
-    const generos   = getCheckedValues('genero');
-    const generoOutro = (document.querySelector('input[name="genero_outro"]')?.value||'').trim();
-
-    const protocolo = gerarProtocolo();
-
-    const linhas = [
-      `📝 Novo cadastro – *${nome}*`,
-      '',
-      `Motivo: ${motivo}`,
-      `Tipo: ${tipo}`,
-      `CPF: ${cpf} | WhatsApp: ${whats}`,
-      email ? `E-mail: ${email}` : '',
-      breve ? `Descrição: ${breve}` : '',
-      identON && (nomeSocial || pronomes) ? '' : '',
-      identON && nomeSocial ? `Nome social: ${nomeSocial}` : '',
-      identON && pronomes   ? `Pronomes: ${pronomes}` : '',
-      genON && (generos.length || generoOutro) ? `Identidade de gênero: ${[...generos, generoOutro?`Outro: ${generoOutro}`:''].filter(Boolean).join(', ')}` : '',
-      '',
-      `Protocolo: ${protocolo}`,
-      '',
-      'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'
-    ].filter(Boolean);
-
-    return { texto: linhas.join('\n'), protocolo };
-  }
-
-  // envio fixo e exclusivo para o seu número (não abre seletor de contatos no iOS)
-  function enviarWhatsApp(texto){
-    const DESTINO = '5511956759223'; // +55 11 95675-9223
-    const url = `https://api.whatsapp.com/send?phone=${DESTINO}&text=${encodeURIComponent(texto)}`;
-    // redireciona na mesma aba para evitar tela de contato
-    window.location.assign(url);
-  }
-
-  // validação mínima
-  function validar(){
-    const erros = [];
-    if (!$('#lgpd').checked) erros.push('Você precisa concordar com o Aviso de Privacidade.');
-    const nome = $('#nome').value.trim();
-    const cpf  = $('#cpf').value.trim();
-    const whats= $('#whats').value.replace(/\D/g,'');
-    if (!nome) erros.push('Informe o nome.');
-    if (!isValidCPF(cpf)) erros.push('CPF inválido.');
-    if (!(whats.length===11)) erros.push('WhatsApp inválido (use DDD + número, ex.: (11) 95675-9223).');
-    const tipoOk = $$('input[name="tipo"]').some(r=>r.checked);
-    if (!tipoOk) erros.push('Selecione o tipo de contato.');
-    if (erros.length){
-      alert('Ajuste os campos:\n• ' + erros.join('\n• '));
-      return false;
+    /* ===== Utilidades ===== */
+    function gerarProtocolo(){
+      const d=new Date(), p=n=>String(n).padStart(2,'0');
+      return `JG-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}-${Math.floor(1000+Math.random()*8999)}`;
     }
-    return true;
-  }
+    function maskCPF(el){
+      let v=el.value.replace(/\D/g,'').slice(0,11);
+      if(v.length>9)      el.value=v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,"$1.$2.$3-$4");
+      else if(v.length>6) el.value=v.replace(/(\d{3})(\d{3})(\d{0,3})/,"$1.$2.$3");
+      else if(v.length>3) el.value=v.replace(/(\d{3})(\d{0,3})/,"$1.$2");
+      else                el.value=v;
+    }
+    function maskCEP(el){
+      let v=el.value.replace(/\D/g,'').slice(0,8);
+      el.value = v.length>5 ? v.replace(/(\d{5})(\d{0,3})/,"$1-$2") : v;
+    }
+    function maskDDD(el){ el.value = el.value.replace(/\D/g,'').slice(0,2); }
+    function maskFone(el){
+      el.value = el.value.replace(/\D/g,'').slice(0,9).replace(/(\d{5})(\d{4})/,"$1-$2");
+    }
+    function maskData(el){
+      let v=el.value.replace(/\D/g,'').slice(0,8);
+      if(v.length>=5)      el.value=v.replace(/(\d{2})(\d{2})(\d{0,4})/,"$1/$2/$3");
+      else if(v.length>=3) el.value=v.replace(/(\d{2})(\d{0,2})/,"$1/$2");
+      else                 el.value=v;
+    }
+    function isValidCPF(str){
+      const cpf=(str||'').replace(/\D/g,'');
+      if(!cpf||cpf.length!==11||/^([0-9])\1{10}$/.test(cpf)) return false;
+      let s=0; for(let i=0;i<9;i++) s+=parseInt(cpf[i])*(10-i);
+      let r=11-(s%11); const d1=(r>=10)?0:r; if(d1!==parseInt(cpf[9])) return false;
+      s=0; for(let i=0;i<10;i++) s+=parseInt(cpf[i])*(11-i);
+      r=11-(s%11); const d2=(r>=10)?0:r; return d2===parseInt(cpf[10]);
+    }
 
-  // binds
-  function bind(){
-    // máscaras
-    $('#cpf').addEventListener('input', e=>maskCPF(e.target));
-    $('#whats').addEventListener('input', e=>maskWhats(e.target));
+    /* ===== ViaCEP ===== */
+    async function viaCEP(raw){
+      try{
+        const r=await fetch(`https://viacep.com.br/ws/${raw}/json/`);
+        const j=await r.json();
+        return j && !j.erro ? j : null;
+      }catch(e){ return null; }
+    }
+    async function autoCEP(cepEl, cidadeEl, ufEl, ruaEl, bairroEl, cidadeCompactEl){
+      const raw=(cepEl.value||'').replace(/\D/g,''); if(raw.length!==8) return;
+      const j=await viaCEP(raw);
+      if(cidadeEl) cidadeEl.value=''; if(ufEl) ufEl.value=''; if(ruaEl) ruaEl.value=''; if(bairroEl) bairroEl.value=''; if(cidadeCompactEl) cidadeCompactEl.value='';
+      if(!j) return;
+      if(cidadeEl) cidadeEl.value=j.localidade||'';
+      if(ufEl)     ufEl.value=j.uf||'';
+      if(ruaEl && j.logradouro)  ruaEl.value=j.logradouro;
+      if(bairroEl && j.bairro)   bairroEl.value=j.bairro;
+      if(cidadeCompactEl) cidadeCompactEl.value = `${j.localidade||''}/${j.uf||''}`.trim();
+    }
 
-    setupToggles();
+    /* ===== Mensagens para WhatsApp ===== */
+    function montarMsgSimples(d, protocolo){
+      const identGeneros = (d.ident_genero_list||[]).join(', ');
+      return [
+        `📝 Novo cadastro – *${d.nome}*`,
+        '',
+        `Nome: ${d.nome}`,
+        d.nome_social?`Nome social: ${d.nome_social}`:'',
+        d.pronomes?`Pronomes: ${d.pronomes}`:'',
+        identGeneros?`Identidade(s) de gênero: ${identGeneros}${d.genero_outro? ' — '+d.genero_outro:''}`:'',
+        `CPF: ${d.cpf} | WhatsApp: ${d.cel}`,
+        d.email?`E-mail: ${d.email}`:'',
+        `Cidade/UF: ${d.cidadeuf} | CEP: ${d.cep}`,
+        d.breve?`Motivo do contato: ${d.breve}`:'',
+        `Protocolo: ${protocolo}`,
+        '',
+        'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'
+      ].filter(Boolean).join('\n');
+    }
+    function montarMsgCompleta(d, protocolo){
+      const identGeneros = (d.ident_genero_list||[]).join(', ');
+      return [
+        `📝 Novo cadastro completo de *${d.nome}*`,
+        '',
+        `Nome completo: ${d.nome}`,
+        d.nome_social?`Nome social: ${d.nome_social}`:'',
+        d.pronomes?`Pronomes: ${d.pronomes}`:'',
+        identGeneros?`Identidade(s) de gênero: ${identGeneros}${d.genero_outro? ' — '+d.genero_outro:''}`:'',
+        `Nacionalidade: ${d.nacionalidade}${d.nacionalidade==='Outros'&&d.nac_outros?` (${d.nac_outros})`:''}`,
+        `Nascimento: ${d.nasc} | Estado civil: ${d.ec}`,
+        `Profissão: ${d.prof}`,
+        `RG: ${d.rg} / ${d.rguf} | CPF: ${d.cpf}`,
+        `Endereço: ${d.rua}, nº ${d.num}${d.compl?(' – '+d.compl):''}, ${d.bairro} – ${d.cidade}/${d.uf} – CEP ${d.cep}`,
+        `WhatsApp: (${d.ddd}) ${d.cel} | E-mail: ${d.email}`,
+        `Protocolo: ${protocolo}`,
+        '',
+        'Li e concordo com o Aviso de Privacidade acima e autorizo o envio desta solicitação via WhatsApp Business (+55 11 95675-9223).'
+      ].filter(Boolean).join('\n');
+    }
 
-    // submit
-    $('#form').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      if (!validar()) return;
-      const { texto } = montarMensagem();
-      enviarWhatsApp(texto);
-    });
-  }
+    /* ===== Coletas ===== */
+    function coletaSimples(){
+      const generoChecks = Array.from($('#genero-opcoes-s')?.querySelectorAll('input[type="checkbox"]:checked')||[]).map(c=>c.value);
+      return {
+        motivo: $('#motivo').value,
+        tipo: ($$('input[name="tipo"]').find(r=>r.checked)||{}).value||'—',
+        nome: $('#nome_s').value.trim(),
+        nome_social: $('#nome_social_s')?.value.trim()||'',
+        pronomes: $('#pronomes_s')?.value.trim()||'',
+        ident_genero_list: generoChecks,
+        genero_outro: $('#genero_outro_s')?.value.trim()||'',
+        cpf: $('#cpf_s').value.trim(),
+        cel: $('#cel_s').value.trim(),
+        email: $('#email_s').value.trim(),
+        cep: $('#cep_s').value.trim(),
+        cidadeuf: $('#cidadeuf_s').value.trim(),
+        breve: $('#breve').value.trim()
+      };
+    }
+    function coletaCompleta(){
+      const generoChecks = Array.from($('#genero-opcoes')?.querySelectorAll('input[type="checkbox"]:checked')||[]).map(c=>c.value);
+      return {
+        motivo: $('#motivo').value,
+        nome: $('#nome').value.trim(),
+        nome_social: $('#nome_social')?.value.trim()||'',
+        pronomes: $('#pronomes')?.value.trim()||'',
+        ident_genero_list: generoChecks,
+        genero_outro: $('#genero_outro')?.value.trim()||'',
+        nacionalidade: $('#nacionalidade').value,
+        nac_outros: ($('#nac_outros')?.value||'').trim(),
+        nasc: $('#nasc').value.trim(),
+        ec: $('#ec').value,
+        prof: $('#prof').value==='OUTROS'?($('#prof_outros').value.trim()||'OUTROS'):$('#prof').value,
+        rg: $('#rg').value.trim(),
+        rguf: $('#rguf').value,
+        cpf: $('#cpf').value.trim(),
+        cep: $('#cep').value.trim(),
+        rua: $('#rua').value.trim(),
+        num: $('#num').value.trim(),
+        compl: $('#compl').value.trim(),
+        bairro: $('#bairro').value.trim(),
+        uf: $('#uf').value,
+        cidade: $('#cidade').value.trim(),
+        ddd: $('#ddd').value.trim(),
+        cel: $('#cel').value.trim(),
+        email: $('#email').value.trim()
+      };
+    }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bind);
-  } else {
-    bind();
-  }
-</script>
-</body>
-</html>
+    /* ===== Validações ===== */
+    function showErrors(list){ alert('Ajuste:\n• '+list.join('\n• ')); (document.activeElement||document.body).blur(); }
+    function validaSimples(d){
+      const falt=[];
+      if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; }
+      if(!d.nome) falt.push('NOME');
+      if(!d.cpf)  falt.push('CPF');
+      if(!isValidCPF(d.cpf)) falt.push('CPF inválido');
+      if(!d.cel)  falt.push('WHATSAPP');
+      if(!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(d.cel) && d.cel.replace(/\D/g,'').length!==11 && d.cel.replace(/\D/g,'').length!==9)
+        falt.push('WhatsApp inválido');
+      if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido');
+      if(!d.cidadeuf) falt.push('CIDADE/UF');
+      if(falt.length){ showErrors(falt); return false; }
+      return true;
+    }
+    function validaCompleta(d){
+      const falt=[];
+      if(!$('#lgpd').checked){ $('#lgpd-erro').style.display='block'; return false; }
+      ['nome','nasc','ec','prof','rg','rguf','cpf','cep','rua','num','bairro','uf','cidade','ddd','cel','email']
+        .forEach(k=>{ if(!d[k]) falt.push(k.toUpperCase()); });
+      if(!isValidCPF(d.cpf)) falt.push('CPF inválido');
+      if(!/^\d{2}$/.test(d.ddd)) falt.push('DDD inválido');
+      if(!/^\d{5}-?\d{3}$/.test(d.cep)) falt.push('CEP inválido');
+      if(d.cel.replace(/\D/g,'').length!==9) falt.push('WhatsApp inválido');
+      if(falt.length){ showErrors(falt); return false; }
+      return true;
+    }
+
+    /* ===== Alternância Simples x Completo ===== */
+    function normalize(s){ return (s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,''); }
+    function toggleModo(){
+      const m=normalize($('#motivo').value);
+      const full = (m==='cadastro_procuracao'); // Opção 1
+      $('#sec-completo').classList.toggle('hide',!full);
+      $('#sec-simples').classList.toggle('hide', full);
+      $('#tipo_wrap').classList.toggle('hide', full);
+    }
+
+    /* ===== WhatsApp (sempre para +55 11 95675-9223) ===== */
+    function abrirWhatsApp(msg){
+      const fone='5511956759223';
+      const base = isiOS() ? 'https://api.whatsapp.com/send' : 'https://wa.me';
+      const url  = `${base}/${fone}?text=${encodeURIComponent(msg)}`;
+      if (isMobile()) window.location.assign(url);
+      else window.open(url,'_blank','noopener,noreferrer');
+    }
+
+    /* ===== Bind ===== */
+    function bind(){
+      // máscaras - simples
+      $('#cpf_s')?.addEventListener('input',e=>maskCPF(e.target));
+      $('#cel_s')?.addEventListener('input',e=>{ e.target.value=e.target.value.replace(/[^\d()\-\s+]/g,''); });
+      const cepS=$('#cep_s');
+      if(cepS) ['input','blur','change','keyup','touchend'].forEach(ev=>cepS.addEventListener(ev,()=>{ maskCEP(cepS); autoCEP(cepS,null,null,null,null,$('#cidadeuf_s')); }));
+
+      // máscaras - completo
+      $('#cpf')?.addEventListener('input',e=>maskCPF(e.target));
+      $('#nasc')?.addEventListener('input',e=>maskData(e.target));
+      $('#ddd')?.addEventListener('input',e=>maskDDD(e.target));
+      $('#cel')?.addEventListener('input',e=>maskFone(e.target));
+      const cepC=$('#cep');
+      if(cepC) ['input','blur','change','keyup','touchend'].forEach(ev=>cepC.addEventListener(ev,()=>{ maskCEP(cepC); autoCEP(cepC,$('#cidade'),$('#uf'),$('#rua'),$('#bairro')); }));
+
+      // nacionalidade "Outros"
+      $('#nacionalidade')?.addEventListener('change',()=>{ $('#nac_outros_wrap').classList.toggle('hide', $('#nacionalidade').value!=='Outros'); });
+
+      // profissão OUTROS
+      $('#prof')?.addEventListener('change',()=>{ $('#prof_outros_wrap').classList.toggle('hide', $('#prof').value!=='OUTROS'); });
+
+      // toggles identificação complementar
+      $$('input[name="ident_comp"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#ident-comp-bloco').classList.toggle('hide', !show); }));
+      $$('input[name="ident_comp_s"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#ident-comp-bloco-s')?.classList.toggle('hide', !show); }));
+
+      // toggles identidade de gênero
+      $$('input[name="ident_genero_toggle"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#genero-opcoes').classList.toggle('hide', !show); }));
+      $$('input[name="ident_genero_toggle_s"]').forEach(r=>r.addEventListener('change',()=>{ const show = r.checked && r.value==='sim'; $('#genero-opcoes-s')?.classList.toggle('hide', !show); }));
+
+      // alternância global do select "motivo"
+      ['change','click','keyup','touchend','input','blur'].forEach(ev=>{
+        $('#motivo')?.addEventListener(ev, toggleModo, {passive:true});
+      });
+      toggleModo();
+
+      // SUBMIT
+      $('#form')?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        if(!$('#lgpd')?.checked){ $('#lgpd-erro').style.display='block'; return; }
+        const full = !$('#sec-completo').classList.contains('hide');
+        const protocolo = gerarProtocolo();
+        if(full){
+          const d=coletaCompleta(); if(!validaCompleta(d)) return;
+          const msg = montarMsgCompleta(d, protocolo);
+          abrirWhatsApp(msg);
+        }else{
+          const d=coletaSimples(); if(!validaSimples(d)) return;
+          const msg = montarMsgSimples(d, protocolo);
+          abrirWhatsApp(msg);
+        }
+      });
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', bind); else bind();
+  </script>
